@@ -18,14 +18,19 @@ label.pack(side=LEFT, anchor=NW)
 
 #Text displaying app name
 text_label = Label(window, text="My Goalie", font=("Georgia", 48), fg="#98D8DD", bg="#2C2A64")
+#Positioning of this text
 text_label.place(relx=0.09, rely=0.01, anchor=NW)
 
+#Text displaying the yellow text
 text_label2 = Label(window, text="Are you curious to discover and work towards a personalised goal?", font =("Verdana", 25),
 fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
 text_label2.place(relx=0.5, rely=0.3, anchor=CENTER)
 
+#Text displaying the green text
 text_label3 = Label(window, text="Take the quiz below to begin your journey towards success!" , font =("Verdana", 20),
 fg="#A6DF05", bg="#2C2A64")
+#Positioning of this text 
 text_label3.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 #This allows for a new window to open when the button is clicked
