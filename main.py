@@ -22,8 +22,11 @@ text_label.place(relx=0.09, rely=0.01, anchor=NW)
 
 text_label2 = Label(window, text="Are you curious to discover and work towards a personalised goal?", font =("Verdana", 25),
 fg="#FBFF37", bg="#2C2A64")
-text_label2.place(relx=0.5, rely=0.4, anchor=CENTER)
+text_label2.place(relx=0.5, rely=0.3, anchor=CENTER)
 
+text_label3 = Label(window, text="Take the quiz below to begin your journey towards success!" , font =("Verdana", 20),
+fg="#A6DF05", bg="#2C2A64")
+text_label3.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 #This allows for a new window to open when the button is clicked
 def open_quiz_window():
