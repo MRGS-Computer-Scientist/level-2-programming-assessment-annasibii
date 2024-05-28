@@ -21,8 +21,8 @@ def open_quiz_window():
     quiz_window.create_quiz_window(window)
 
 #Created a button to take quiz 
-quiz_button = Button(window,text= "Take the Quiz",command=open_quiz_window, font=("Arial", 40), bg='#A20202', fg='white', borderwidth=5, relief=RAISED)
-quiz_button.pack(pady=20)
+quiz_button = Button(window,text= "Take the Quiz",command=open_quiz_window, font=("Arial", 40), bg='#A20202', fg='white', borderwidth=7,)
+quiz_button.place(relx=0.5, rely=0.8, anchor='s')
 
 
 
