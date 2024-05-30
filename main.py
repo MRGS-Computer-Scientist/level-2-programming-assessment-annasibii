@@ -33,10 +33,6 @@ fg="#A6DF05", bg="#2C2A64")
 #Positioning of this text 
 text_label3.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-#This allows for a new window to open when the button is clicked
-def open_quiz_window():
-    quiz_window.create_quiz_window(window)
-
 #Created a button to take quiz + designed the appearance
 quiz_button = Button(window,text= "Take the Quiz",command=open_quiz_window, font=("Arial", 37), bg='#A20202', fg='white', borderwidth=7,)
 quiz_button.place(relx=0.5, rely=0.8, anchor='s')
