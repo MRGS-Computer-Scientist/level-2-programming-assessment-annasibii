@@ -1,5 +1,12 @@
 from tkinter import*
 
+def go_to_quiz_frame():
+  # Hide the start frame
+  start_frame.pack_forget()
+  quiz_frame.pack()
+
+
+
 #Created a window and set a background colour
 window = Tk()
 window.geometry("1280x800")
@@ -40,8 +47,12 @@ text_label3.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 #Created a button to take quiz + designed the appearance
 quiz_button = Button(start_frame,text= "Take the Quiz", font=("Arial", 37), bg='#A20202', fg='white', borderwidth=7,)
-quiz_button.place(relx=0.5, rely=0.8, anchor='s')
+quiz_button.place(relx=0.5, rely=0.8, anchor=S)
 
+
+######## Quiz Frame ########
+
+quiz_frame = Frame(window, width=1280, height=800, background='2C2A64')
 
 window.mainloop()
 
