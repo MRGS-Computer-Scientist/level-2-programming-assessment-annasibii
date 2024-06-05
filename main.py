@@ -6,7 +6,6 @@ def go_to_quiz_frame():
   quiz_frame.pack()
 
 
-
 #Created a window and set a background colour
 window = Tk()
 window.geometry("1280x800")
@@ -52,7 +51,21 @@ quiz_button.place(relx=0.5, rely=0.8, anchor=S)
 
 ######## Quiz Frame ########
 
-quiz_frame = Frame(window, width=1280, height=800, background='2C2A64')
+quiz_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+quiz_frame.pack_forget()
+
+#Added my logo image and edited the appearance
+img = PhotoImage(file="applogo.png")
+img = img.subsample(6) 
+label = Label(quiz_frame,image=img,borderwidth=0, highlightthickness=0)
+label.pack(side=LEFT, anchor=NW)
+
+#Text displaying app name
+text_label = Label(quiz_frame, text="My Goalie", font=("Georgia", 48), fg="#98D8DD", bg="#2C2A64")
+text_label.place(relx=0.09, rely=0.01, anchor=NW)
+
+
+
 
 window.mainloop()
 
