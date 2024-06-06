@@ -1,9 +1,10 @@
 from tkinter import*
 
 def go_to_quiz_frame():
+  pass
   # Hide the start frame
-  start_frame.pack_forget()
-  quiz_frame.pack()
+  #start_frame.pack_forget()
+  #quiz_frame.pack()
 
 
 #Created a window and set a background colour
@@ -12,8 +13,13 @@ window.geometry("1280x800")
 window.title("My App")
 window['bg']='#2C2A64'
 
+top_frame = Frame(window, width=1280, height=100, bg='#2C2A64')
+#Keeping the same width and height of the frame. By default, frames only take up as much space as they need.
+top_frame.pack_propagate(False)
+top_frame.pack()
+
 #Creating a frame that holds all the widgets
-start_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+start_frame = Frame(window, width=1280, height=700, background='#2C2A64')
 start_frame.pack()
 #Maintains frame size with specified width and height
 start_frame.pack_propagate(0)
@@ -23,12 +29,12 @@ img = PhotoImage(file="applogo.png")
 #This resizes the original picture by a factor of 6
 img = img.subsample(6) 
 #This allows the gray border of the picture to disappear
-label = Label(start_frame,image=img,borderwidth=0, highlightthickness=0)
+label = Label(top_frame,image=img,borderwidth=0, highlightthickness=0)
 #This allows the picture to be found on the left and north west of the page
 label.pack(side=LEFT, anchor=NW)
 
 #Text displaying app name
-text_label = Label(start_frame, text="My Goalie", font=("Georgia", 48), fg="#98D8DD", bg="#2C2A64")
+text_label = Label(top_frame, text="My Goalie", font=("Georgia", 48), fg="#98D8DD", bg="#2C2A64")
 #Positioning of this text
 text_label.place(relx=0.09, rely=0.01, anchor=NW)
 
@@ -51,18 +57,10 @@ quiz_button.place(relx=0.5, rely=0.8, anchor=S)
 
 ######## Quiz Frame ########
 
-quiz_frame = Frame(window, width=1280, height=800, background='#2C2A64')
-quiz_frame.pack_forget()
+#quiz_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
 
 #Added my logo image and edited the appearance
-img = PhotoImage(file="applogo.png")
-img = img.subsample(6) 
-label = Label(quiz_frame,image=img,borderwidth=0, highlightthickness=0)
-label.pack(side=LEFT, anchor=NW)
-
-#Text displaying app name
-text_label = Label(quiz_frame, text="My Goalie", font=("Georgia", 48), fg="#98D8DD", bg="#2C2A64")
-text_label.place(relx=0.09, rely=0.01, anchor=NW)
 
 
 
