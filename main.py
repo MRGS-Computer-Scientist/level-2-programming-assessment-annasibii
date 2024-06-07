@@ -64,21 +64,32 @@ fg="#FBFF37", bg="#2C2A64")
 #Positioning of this text
 text_label2.place(relx=0.5, rely=0.15, anchor=CENTER)
 
-# Define an IntVar variable to store the selected radio button
+# Defined IntVar variable which stores the selected radio buttons
 selected_var = IntVar()
 
 # Creating radio buttons - ensures that only one box can be checked
 productivity_radio = Radiobutton(quiz_frame, text="Productivity", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0)
 
+#This is the health radio button 
 health_radio = Radiobutton(quiz_frame, text="Health", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0)
 
-# Positioning the radio buttons
+#Positioning the radio buttons
 productivity_radio.place(relx=0.2, rely=0.4, anchor=W)
 health_radio.place(relx=0.2, rely=0.6, anchor=W)
 
-quiz_button = Button(quiz_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,)
+#Created a next button -> takes users to the next frame (based of their choice)
+quiz_button = Button(quiz_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,) #command=go_to_quiz_frame
 quiz_button.place(relx=0.8, rely=0.75, anchor=S)
 
+
+
+#######If productivity choice selected######
+##frame for this 
+
+######(the button will have 2 commands?)
+
+##### If health choice selected####
+##frame for this
 
 
 window.mainloop()
