@@ -15,6 +15,16 @@ def go_to_next_frame():
     productivity_frame.pack()
   elif choice ==2: #Health
     health_frame.pack()
+
+
+def change_color():
+  if selected_var.get()== 1:
+    productivity_radio.config(bg="gray", fg="black")
+    health_radio.config(bg="#CCCCCC", fg="000000")
+  elif selected_var.get()== 2:
+    health_radio.config(bg="gray", fg="black")
+    productivity_radio.config(bg="#CCCCCC", fg="000000")
+    
   
 
 #Created a window and set a background colour
@@ -79,10 +89,10 @@ text_label2.place(relx=0.5, rely=0.15, anchor=CENTER)
 selected_var = IntVar()
 
 # Creating radio buttons - ensures that only one box can be checked
-productivity_radio = Radiobutton(quiz_frame, text="Productivity", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0)
+productivity_radio = Radiobutton(quiz_frame, text="Productivity", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_color)
 
 #This is the health radio button 
-health_radio = Radiobutton(quiz_frame, text="Health", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0)
+health_radio = Radiobutton(quiz_frame, text="Health", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64", command=change_color)
 
 #Positioning the radio buttons
 productivity_radio.place(relx=0.2, rely=0.4, anchor=W)
