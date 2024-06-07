@@ -5,6 +5,17 @@ def go_to_quiz_frame():
   quiz_frame.pack()
   #Hide the start frame 
 
+def go_to_next_frame():
+  #Get the user's choice from the radio buttons
+  choice = selected_var.get()
+  #Hide the quiz frame
+  quiz_frame.pack_forget()
+  #show the frame selected by the user's choice 
+  if choice ==1: #Productivity
+    productivity_frame.pack()
+  elif choice ==2: #Health
+    health_frame.pack()
+  
 
 #Created a window and set a background colour
 window = Tk()
@@ -78,10 +89,12 @@ productivity_radio.place(relx=0.2, rely=0.4, anchor=W)
 health_radio.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created a next button -> takes users to the next frame (based of their choice)
-quiz_button = Button(quiz_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,) #command=go_to_quiz_frame
+quiz_button = Button(quiz_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_next_frame)
 quiz_button.place(relx=0.8, rely=0.75, anchor=S)
 
+productivity_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
+health_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
 #######If productivity choice selected######
 ##frame for this 
