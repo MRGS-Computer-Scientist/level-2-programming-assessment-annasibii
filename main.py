@@ -20,10 +20,10 @@ def go_to_next_frame():
 def change_color():
   if selected_var.get()== 1:
     productivity_radio.config(bg="gray", fg="black")
-    health_radio.config(bg="#CCCCCC", fg="000000")
+    health_radio.config(bg='#2C2A64', fg="#A6DF05")
   elif selected_var.get()== 2:
     health_radio.config(bg="gray", fg="black")
-    productivity_radio.config(bg="#CCCCCC", fg="000000")
+    productivity_radio.config(bg='#2C2A64', fg="#A6DF05")
     
   
 
