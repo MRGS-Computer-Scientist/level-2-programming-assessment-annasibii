@@ -16,6 +16,7 @@ def go_to_next_frame():
   elif choice ==2: #Health
     health_frame.pack()
 
+
 #Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_color():
   if selected_var.get()== 1:
@@ -24,7 +25,8 @@ def change_color():
   elif selected_var.get()== 2:
     health_radio.config(bg="gray", fg="black")
     productivity_radio.config(bg='#2C2A64', fg="#A6DF05")
-    
+
+
 #Created a window and set a background colour
 window = Tk()
 window.geometry("1280x800")
@@ -114,6 +116,15 @@ help_label = Label(productivity_frame, text="My goal is focused on...", font =("
 fg="white", bg="#2C2A64")
 #Positioning of this text
 help_label.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined IntVar variable which stores the selected radio buttons
+productivity_selected_var = IntVar()
+
+# Creating radio buttons - ensures that only one box can be checked
+studying_radio = Radiobutton(productivity_frame, text="Studying", font=("Verdana", 15),fg="#A6DF05", bg="#2C2A64", variable=productivity_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_color)
+
+studying_radio.place(relx=0.2, rely=0.4, anchor=W)
+
 
 ####### Health Frame ########
 health_frame = Frame(window, width=1280, height=800, background='#2C2A64')
