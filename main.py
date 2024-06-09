@@ -16,7 +16,7 @@ def go_to_next_frame():
   elif choice ==2: #Health
     health_frame.pack()
 
-
+#Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_color():
   if selected_var.get()== 1:
     productivity_radio.config(bg="gray", fg="black")
@@ -25,8 +25,6 @@ def change_color():
     health_radio.config(bg="gray", fg="black")
     productivity_radio.config(bg='#2C2A64', fg="#A6DF05")
     
-  
-
 #Created a window and set a background colour
 window = Tk()
 window.geometry("1280x800")
@@ -102,17 +100,26 @@ health_radio.place(relx=0.2, rely=0.6, anchor=W)
 quiz_button = Button(quiz_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_next_frame)
 quiz_button.place(relx=0.8, rely=0.75, anchor=S)
 
+######## Productivity Frame ########
 productivity_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
+#Text displaying the yellow text
+text_label3 = Label(productivity_frame, text="What area in productivity would you like to have a goal for?", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label3.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the yellow text
+help_label = Label(productivity_frame, text="My goal is focused on...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+####### Health Frame ########
 health_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
-#######If productivity choice selected######
-##frame for this 
 
 ######(the button will have 2 commands?)
-
-##### If health choice selected####
-##frame for this
 
 
 window.mainloop()
