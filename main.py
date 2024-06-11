@@ -50,6 +50,12 @@ def change_productivity_color():
       studying_radio.config(bg='#2C2A64', fg="#A6DF05")
       reading_radio.config(bg='#2C2A64', fg="#A6DF05")
 
+# Created button that takes users to the next frame (based of their previous choice)
+def go_to_time_frame():
+    studying_frame.pack_forget()
+    time_frame.pack()
+  
+
 #Created a window and set a background colour
 window = Tk()
 window.geometry("1280x800")
@@ -141,7 +147,7 @@ fg="white", bg="#2C2A64")
 #Positioning of this text
 help_label.place(relx=0.5, rely=0.25, anchor=CENTER)
 
-# Defined IntVar variable which stores the selected radio buttons
+# Defined productivity IntVar variable which stores the selected radio buttons
 productivity_selected_var = IntVar()
 
 # Creating radio buttons - ensures that only one box can be checked
@@ -166,6 +172,39 @@ quiz_button3.place(relx=0.8, rely=0.75, anchor=S)
 
 #### Studying frame ####
 studying_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#Text displaying the yellow text
+text_label4 = Label(studying_frame, text="What Reading goal would you like to focus on", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label4.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the yellow text
+help_label2 = Label(studying_frame, text="I want to...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label2.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined studying IntVar variable which stores the selected radio buttons
+studying_selected_var = IntVar()
+
+# Creating radio buttons - ensures that only one box can be checked
+study_radio1 = Radiobutton(studying_frame, text="Study 2 hours each day", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=studying_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64")
+#positioning of reading button
+studying_radio.place(relx=0.2, rely=0.5, anchor=W)
+
+#Radio button for studying option 2
+study_radio2 = Radiobutton(studying_frame, text="Finish my homework", font=("Verdana", 25), fg="#A6DF05",
+   bg="#2C2A64", variable=studying_selected_var, value=2, padx=20, pady=10,
+   borderwidth=0, highlightthickness=0, selectcolor="#2C2A64")
+#positioning of this button 
+study_radio2.place(relx=0.2, rely=0.5, anchor=W)
+
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button4 = Button(studying_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
+quiz_button4.place(relx=0.8, rely=0.75, anchor=S)
+
+#########
 
 
 #### Reading frame ####
