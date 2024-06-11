@@ -74,17 +74,17 @@ def change_studying_color():
 
 def change_reading_color():
   if reading_selected_var.get() == 1:
-      study_radio1.config(bg="gray", fg="black")
-      study_radio2.config(bg='#2C2A64', fg="#A6DF05")
-      study_radio3.config(bg='#2C2A64', fg="#A6DF05")
+      reading_radio1.config(bg="gray", fg="black")
+      reading_radio2.config(bg='#2C2A64', fg="#A6DF05")
+      reading_radio3.config(bg='#2C2A64', fg="#A6DF05")
   elif reading_selected_var.get() == 2:
-      study_radio2.config(bg="gray", fg="black")
-      study_radio1.config(bg='#2C2A64', fg="#A6DF05")
-      study_radio3.config(bg='#2C2A64', fg="#A6DF05")
+      reading_radio2.config(bg="gray", fg="black")
+      reading_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      reading_radio3.config(bg='#2C2A64', fg="#A6DF05")
   elif reading_selected_var.get() == 3:
-      study_radio3.config(bg="gray", fg="black")
-      study_radio1.config(bg='#2C2A64', fg="#A6DF05")
-      study_radio2.config(bg='#2C2A64', fg="#A6DF05")
+      reading_radio3.config(bg="gray", fg="black")
+      reading_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      reading_radio2.config(bg='#2C2A64', fg="#A6DF05")
 
 #Created a window and set a background colour
 window = Tk()
@@ -282,8 +282,8 @@ money_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 health_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
 ####### Time Frame ######
+time_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
-######(the button will have 2 commands?)
 
 
 window.mainloop()
