@@ -1,5 +1,6 @@
 from tkinter import*
 
+##### where each frame leads to ######
 def go_to_quiz_frame():
   start_frame.pack_forget()
   quiz_frame.pack()
@@ -26,7 +27,18 @@ def go_to_productivity_subgoal_frame():
       reading_frame.pack()
   elif subgoal_choice == 3:
       money_frame.pack()
-    
+
+# Created button that takes users to the next frame (based of their previous choice)
+def go_to_time_frame():
+    studying_frame.pack_forget()
+    time_frame.pack()
+
+def go_to_time_frame():
+  reading_frame.pack_forget()
+  time_frame.pack()
+  
+#############Colour of highlighted options##############
+
 #Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_color():
   if selected_var.get()== 1:
@@ -60,12 +72,19 @@ def change_studying_color():
       study_radio2.config(bg="gray", fg="black")
       study_radio1.config(bg='#2C2A64', fg="#A6DF05")
 
-
-# Created button that takes users to the next frame (based of their previous choice)
-def go_to_time_frame():
-    studying_frame.pack_forget()
-    time_frame.pack()
-  
+def change_reading_color():
+  if reading_selected_var.get() == 1:
+      study_radio1.config(bg="gray", fg="black")
+      study_radio2.config(bg='#2C2A64', fg="#A6DF05")
+      study_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif reading_selected_var.get() == 2:
+      study_radio2.config(bg="gray", fg="black")
+      study_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      study_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif reading_selected_var.get() == 3:
+      study_radio3.config(bg="gray", fg="black")
+      study_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      study_radio2.config(bg='#2C2A64', fg="#A6DF05")
 
 #Created a window and set a background colour
 window = Tk()
@@ -233,7 +252,24 @@ help_label3.place(relx=0.5, rely=0.25, anchor=CENTER)
 # Defined reading IntVar variable which stores the selected radio buttons
 reading_selected_var = IntVar()
 
+# Creating radio buttons - ensures that only one box can be checked
+reading_radio1 = Radiobutton(reading_frame, text="Read 1 book", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=reading_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64", command=change_reading_color)
+#positioning of reading button
+reading_radio1.place(relx=0.2, rely=0.5, anchor=W)
 
+#Radio button for reading option 2
+reading_radio2 = Radiobutton(reading_frame, text="Read 5 books", font=("Verdana", 25), fg="#A6DF05",bg="#2C2A64", variable=reading_selected_var, value=2, padx=20, pady=10, borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_reading_color)
+#positioning of this button 
+reading_radio2.place(relx=0.2, rely=0.6, anchor=W)
+
+#Radio button for reading option 3
+reading_radio3 = Radiobutton(reading_frame, text="Read 10 books", font=("Verdana", 25), fg="#A6DF05",bg="#2C2A64", variable=reading_selected_var, value=3, padx=20, pady=10, borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_reading_color)
+#positioning of this button 
+reading_radio3.place(relx=0.2, rely=0.7, anchor=W)
+
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button5 = Button(reading_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
+quiz_button5.place(relx=0.8, rely=0.75, anchor=S)
 
 
 
@@ -245,7 +281,7 @@ money_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 ####### Health Frame ########
 health_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
-
+####### Time Frame ######
 
 ######(the button will have 2 commands?)
 
