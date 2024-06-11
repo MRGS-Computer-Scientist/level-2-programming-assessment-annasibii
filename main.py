@@ -16,7 +16,17 @@ def go_to_next_frame():
   elif choice ==2: #Health
     health_frame.pack()
 
-
+#Takes users into frame based of their productivity goal choice
+def go_to_productivity_subgoal_frame():
+  subgoal_choice = productivity_selected_var.get()
+  productivity_frame.pack_forget()
+  if subgoal_choice == 1:
+      studying_frame.pack()
+  elif subgoal_choice == 2:
+      reading_frame.pack()
+  elif subgoal_choice == 3:
+      money_frame.pack()
+    
 #Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_color():
   if selected_var.get()== 1:
@@ -26,6 +36,19 @@ def change_color():
     health_radio.config(bg="gray", fg="black")
     productivity_radio.config(bg='#2C2A64', fg="#A6DF05")
 
+def change_productivity_color():
+  if productivity_selected_var.get() == 1:
+      studying_radio.config(bg="gray", fg="black")
+      reading_radio.config(bg='#2C2A64', fg="#A6DF05")
+      money_radio.config(bg='#2C2A64', fg="#A6DF05")
+  elif productivity_selected_var.get() == 2:
+      reading_radio.config(bg="gray", fg="black")
+      studying_radio.config(bg='#2C2A64', fg="#A6DF05")
+      money_radio.config(bg='#2C2A64', fg="#A6DF05")
+  elif productivity_selected_var.get() == 3:
+      money_radio.config(bg="gray", fg="black")
+      studying_radio.config(bg='#2C2A64', fg="#A6DF05")
+      reading_radio.config(bg='#2C2A64', fg="#A6DF05")
 
 #Created a window and set a background colour
 window = Tk()
@@ -99,8 +122,8 @@ productivity_radio.place(relx=0.2, rely=0.4, anchor=W)
 health_radio.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created a next button -> takes users to the next frame (based of their choice)
-quiz_button = Button(quiz_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_next_frame)
-quiz_button.place(relx=0.8, rely=0.75, anchor=S)
+quiz_button2 = Button(quiz_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_next_frame)
+quiz_button2.place(relx=0.8, rely=0.75, anchor=S)
 
 ######## Productivity Frame ########
 productivity_frame = Frame(window, width=1280, height=800, background='#2C2A64')
@@ -121,13 +144,32 @@ help_label.place(relx=0.5, rely=0.25, anchor=CENTER)
 productivity_selected_var = IntVar()
 
 # Creating radio buttons - ensures that only one box can be checked
-studying_radio = Radiobutton(productivity_frame, text="Studying", font=("Verdana", 15),fg="#A6DF05", bg="#2C2A64", variable=productivity_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_color)
-
+studying_radio = Radiobutton(productivity_frame, text="Studying", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=productivity_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_productivity_color)
+#positioning of studying button
 studying_radio.place(relx=0.2, rely=0.4, anchor=W)
+
+reading_radio = Radiobutton(productivity_frame, text="Reading", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=productivity_selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_productivity_color)
+#positioning of reading button
+reading_radio.place(relx=0.2, rely=0.5, anchor=W)
+
+money_radio = Radiobutton(productivity_frame, text="Money", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=productivity_selected_var, value=3, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_productivity_color)
+#positioning of money button
+money_radio.place(relx=0.2, rely=0.6, anchor=W)
+
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button3 = Button(productivity_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_productivity_subgoal_frame)
+quiz_button3.place(relx=0.8, rely=0.75, anchor=S)
+
+
+######### The diff types of Productivity subgoals#####
+studying_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+reading_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+money_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
 
 ####### Health Frame ########
 health_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
 
 
 ######(the button will have 2 commands?)
