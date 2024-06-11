@@ -81,6 +81,7 @@ text_label = Label(top_frame, text="My Goalie", font=("Georgia", 48), fg="#98D8D
 #Positioning of this text
 text_label.place(relx=0.09, rely=0.01, anchor=NW)
 
+
 #Text displaying the yellow text
 text_label2 = Label(start_frame, text="Are you curious to discover and work towards a personalised goal?", font =("Verdana", 25),
 fg="#FBFF37", bg="#2C2A64")
@@ -162,8 +163,15 @@ quiz_button3.place(relx=0.8, rely=0.75, anchor=S)
 
 
 ######### The diff types of Productivity subgoals#####
+
+#### Studying frame ####
 studying_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+
+#### Reading frame ####
 reading_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#### Money frame ####
 money_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
 
