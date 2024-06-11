@@ -35,7 +35,8 @@ def change_color():
   elif selected_var.get()== 2:
     health_radio.config(bg="gray", fg="black")
     productivity_radio.config(bg='#2C2A64', fg="#A6DF05")
-
+    
+#Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_productivity_color():
   if productivity_selected_var.get() == 1:
       studying_radio.config(bg="gray", fg="black")
@@ -49,6 +50,16 @@ def change_productivity_color():
       money_radio.config(bg="gray", fg="black")
       studying_radio.config(bg='#2C2A64', fg="#A6DF05")
       reading_radio.config(bg='#2C2A64', fg="#A6DF05")
+
+#Gives different highlight colours to the buttons depending on which ones are selected/not selected
+def change_studying_color():
+  if studying_selected_var.get() == 1:
+      study_radio1.config(bg="gray", fg="black")
+      study_radio2.config(bg='#2C2A64', fg="#A6DF05")
+  elif studying_selected_var.get() == 2:
+      study_radio2.config(bg="gray", fg="black")
+      study_radio1.config(bg='#2C2A64', fg="#A6DF05")
+
 
 # Created button that takes users to the next frame (based of their previous choice)
 def go_to_time_frame():
@@ -141,7 +152,7 @@ fg="#FBFF37", bg="#2C2A64")
 #Positioning of this text
 text_label3.place(relx=0.5, rely=0.15, anchor=CENTER)
 
-#Text displaying the yellow text
+#Text displaying the white text
 help_label = Label(productivity_frame, text="My goal is focused on...", font =("Verdana", 20),
 fg="white", bg="#2C2A64")
 #Positioning of this text
@@ -174,12 +185,12 @@ quiz_button3.place(relx=0.8, rely=0.75, anchor=S)
 studying_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
 #Text displaying the yellow text
-text_label4 = Label(studying_frame, text="What Reading goal would you like to focus on", font =("Verdana", 30),
+text_label4 = Label(studying_frame, text="What Studying goal would you like to focus on", font =("Verdana", 30),
 fg="#FBFF37", bg="#2C2A64")
 #Positioning of this text
 text_label4.place(relx=0.5, rely=0.15, anchor=CENTER)
 
-#Text displaying the yellow text
+#Text displaying the white text
 help_label2 = Label(studying_frame, text="I want to...", font =("Verdana", 20),
 fg="white", bg="#2C2A64")
 #Positioning of this text
@@ -189,16 +200,14 @@ help_label2.place(relx=0.5, rely=0.25, anchor=CENTER)
 studying_selected_var = IntVar()
 
 # Creating radio buttons - ensures that only one box can be checked
-study_radio1 = Radiobutton(studying_frame, text="Study 2 hours each day", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=studying_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64")
+study_radio1 = Radiobutton(studying_frame, text="Study 2 hours each day", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=studying_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64", command=change_studying_color)
 #positioning of reading button
-studying_radio.place(relx=0.2, rely=0.5, anchor=W)
+study_radio1.place(relx=0.2, rely=0.5, anchor=W)
 
 #Radio button for studying option 2
-study_radio2 = Radiobutton(studying_frame, text="Finish my homework", font=("Verdana", 25), fg="#A6DF05",
-   bg="#2C2A64", variable=studying_selected_var, value=2, padx=20, pady=10,
-   borderwidth=0, highlightthickness=0, selectcolor="#2C2A64")
+study_radio2 = Radiobutton(studying_frame, text="Finish my homework", font=("Verdana", 25), fg="#A6DF05",bg="#2C2A64", variable=studying_selected_var, value=2, padx=20, pady=10, borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_studying_color)
 #positioning of this button 
-study_radio2.place(relx=0.2, rely=0.5, anchor=W)
+study_radio2.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
 quiz_button4 = Button(studying_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
@@ -206,9 +215,28 @@ quiz_button4.place(relx=0.8, rely=0.75, anchor=S)
 
 #########
 
-
 #### Reading frame ####
 reading_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#Text displaying the yellow text
+text_label5 = Label(reading_frame, text="What Reading goal would you like to focus on", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label5.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the white text
+help_label3 = Label(reading_frame, text="I want to...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label3.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined reading IntVar variable which stores the selected radio buttons
+reading_selected_var = IntVar()
+
+
+
+
+
 
 #### Money frame ####
 money_frame = Frame(window, width=1280, height=800, background='#2C2A64')
