@@ -36,6 +36,10 @@ def go_to_time_frame():
 def go_to_time_frame():
   reading_frame.pack_forget()
   time_frame.pack()
+
+def go_to_time_frame():
+  money_frame.pack_forget()
+  time_frame.pack()
   
 #############Colour of highlighted options##############
 
@@ -85,6 +89,17 @@ def change_reading_color():
       reading_radio3.config(bg="gray", fg="black")
       reading_radio1.config(bg='#2C2A64', fg="#A6DF05")
       reading_radio2.config(bg='#2C2A64', fg="#A6DF05")
+
+def change_money_color():
+  if money_selected_var.get() == 1:
+      money_radio1.config(bg="gray", fg="black")
+      money_radio2.config(bg='#2C2A64', fg="#A6DF05")
+  elif money_selected_var.get() == 2:
+      money_radio2.config(bg="gray", fg="black")
+      money_radio1.config(bg='#2C2A64', fg="#A6DF05")
+
+
+
 
 #Created a window and set a background colour
 window = Tk()
@@ -290,21 +305,47 @@ help_label4.place(relx=0.5, rely=0.25, anchor=CENTER)
 # Defined money IntVar variable which stores the selected radio buttons
 money_selected_var = IntVar()
 
+#Radio button for money option 1
+money_radio1 = Radiobutton(money_frame, text="Make more money", font=("Verdana", 25), fg="#A6DF05",bg="#2C2A64", variable=money_selected_var, value=1, padx=20, pady=10, borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_money_color)
+#positioning of this button 
+money_radio1.place(relx=0.2, rely=0.5, anchor=W)
 
-
-
+#Radio button for money option 2
+money_radio2 = Radiobutton(money_frame, text="Get a job", font=("Verdana", 25), fg="#A6DF05",bg="#2C2A64", variable=money_selected_var, value=2, padx=20, pady=10, borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_money_color)
+#positioning of this button 
+money_radio2.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
 quiz_button6 = Button(money_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
 quiz_button6.place(relx=0.8, rely=0.75, anchor=S)
 
-
+##########
 
 ####### Health Frame ########
 health_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
+#Text displaying the yellow text
+text_label7 = Label(health_frame, text="What area in health would you like to have a goal for?", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label7.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the white text
+help_label5 = Label(health_frame, text="My goal is focused on...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label5.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined productivity IntVar variable which stores the selected radio buttons
+health_selected_var = IntVar()
+
+
+
+
+
 ####### Time Frame ######
 time_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
 
 
 
