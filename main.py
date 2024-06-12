@@ -272,10 +272,32 @@ quiz_button5 = Button(reading_frame,text= "Next", font=("Arial", 30), bg='#A2020
 quiz_button5.place(relx=0.8, rely=0.75, anchor=S)
 
 
-
-
 #### Money frame ####
 money_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#Text displaying the yellow text
+text_label6 = Label(money_frame, text="What Money goal would you like to focus on", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label6.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the white text
+help_label4 = Label(money_frame, text="I want to...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label4.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined money IntVar variable which stores the selected radio buttons
+money_selected_var = IntVar()
+
+
+
+
+
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button6 = Button(money_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
+quiz_button6.place(relx=0.8, rely=0.75, anchor=S)
+
 
 
 ####### Health Frame ########
