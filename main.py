@@ -28,6 +28,19 @@ def go_to_productivity_subgoal_frame():
   elif subgoal_choice == 3:
       money_frame.pack()
 
+#Takes users into frame based of their health goal choice
+def go_to_health_subgoal_frame():
+  subgoal_choice = health_selected_var.get()
+  health_frame.pack_forget()
+  if subgoal_choice == 1:
+      food_frame.pack()
+  elif subgoal_choice == 2:
+      gym_frame.pack()
+  elif subgoal_choice == 3:
+      sport_frame.pack()
+  elif subgoal_choice == 4:
+      running_frame.pack()
+
 # Created button that takes users to the next frame (based of their previous choice)
 def go_to_time_frame():
     studying_frame.pack_forget()
@@ -98,7 +111,28 @@ def change_money_color():
       money_radio2.config(bg="gray", fg="black")
       money_radio1.config(bg='#2C2A64', fg="#A6DF05")
 
-
+#Gives different highlight colours to the buttons depending on which ones are selected/not selected
+def change_health_color():
+  if health_selected_var.get() == 1:
+      food_radio.config(bg="gray", fg="black")
+      gym_radio.config(bg='#2C2A64', fg="#A6DF05")
+      sport_radio.config(bg='#2C2A64', fg="#A6DF05")
+      running_radio.config(bg='#2C2A64', fg="#A6DF05")
+  elif health_selected_var.get() == 2:
+      gym_radio.config(bg="gray", fg="black")
+      sport_radio.config(bg='#2C2A64', fg="#A6DF05")
+      running_radio.config(bg='#2C2A64', fg="#A6DF05")
+      food_radio.config(bg='#2C2A64', fg="#A6DF05")
+  elif health_selected_var.get() == 3:
+      sport_radio.config(bg="gray", fg="black")
+      running_radio.config(bg='#2C2A64', fg="#A6DF05")
+      food_radio.config(bg='#2C2A64', fg="#A6DF05")
+      gym_radio.config(bg='#2C2A64', fg="#A6DF05")
+  elif health_selected_var.get() == 4:
+      running_radio.config(bg="gray", fg="black")
+      sport_radio.config(bg='#2C2A64', fg="#A6DF05")
+      food_radio.config(bg='#2C2A64', fg="#A6DF05")
+      gym_radio.config(bg='#2C2A64', fg="#A6DF05")
 
 
 #Created a window and set a background colour
@@ -339,6 +373,26 @@ help_label5.place(relx=0.5, rely=0.25, anchor=CENTER)
 # Defined productivity IntVar variable which stores the selected radio buttons
 health_selected_var = IntVar()
 
+# Creating radio buttons - ensures that only one box can be checked
+food_radio = Radiobutton(health_frame, text="Food", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=health_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_health_color)
+#positioning of food button
+food_radio.place(relx=0.2, rely=0.4, anchor=W)
+
+gym_radio = Radiobutton(health_frame, text="Gym", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=health_selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_health_color)
+#positioning of gym button
+gym_radio.place(relx=0.2, rely=0.5, anchor=W)
+
+sport_radio = Radiobutton(health_frame, text="Sport", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=health_selected_var, value=3, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_health_color)
+#positioning of studying button
+sport_radio.place(relx=0.2, rely=0.6, anchor=W)
+
+running_radio = Radiobutton(health_frame, text="Running", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=health_selected_var, value=4, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_health_color)
+#positioning of studying button
+running_radio.place(relx=0.2, rely=0.7, anchor=W)
+
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button7 = Button(health_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_health_subgoal_frame)
+quiz_button7.place(relx=0.8, rely=0.75, anchor=S)
 
 
 
