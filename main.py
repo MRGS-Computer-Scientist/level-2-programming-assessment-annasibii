@@ -378,21 +378,44 @@ food_radio = Radiobutton(health_frame, text="Food", font=("Verdana", 25),fg="#A6
 #positioning of food button
 food_radio.place(relx=0.2, rely=0.4, anchor=W)
 
+#Radio button for gym on health frame
 gym_radio = Radiobutton(health_frame, text="Gym", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=health_selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_health_color)
 #positioning of gym button
 gym_radio.place(relx=0.2, rely=0.5, anchor=W)
 
+#Radio button for sport on health frame
 sport_radio = Radiobutton(health_frame, text="Sport", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=health_selected_var, value=3, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_health_color)
-#positioning of studying button
+#positioning of sport button
 sport_radio.place(relx=0.2, rely=0.6, anchor=W)
 
+#Radio button for running on health frame 
 running_radio = Radiobutton(health_frame, text="Running", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=health_selected_var, value=4, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_health_color)
-#positioning of studying button
+#positioning of running button
 running_radio.place(relx=0.2, rely=0.7, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
 quiz_button7 = Button(health_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_health_subgoal_frame)
 quiz_button7.place(relx=0.8, rely=0.75, anchor=S)
+
+######### The diff types of Health subgoals#####
+
+#### Food frame ####
+food_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#Text displaying the yellow text
+text_label8 = Label(food_frame, text="What Food goal would you like to focus on", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label8.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the white text
+help_label6 = Label(food_frame, text="I want to...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label6.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+
+
 
 
 
