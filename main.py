@@ -69,6 +69,8 @@ def go_to_time_frame():
 def go_to_time_frame():
     running_frame.pack_forget()
     time_frame.pack()
+
+
   
 #############Colour of highlighted options##############
 
@@ -620,11 +622,20 @@ quiz_button11 = Button(running_frame,text= "Next", font=("Arial", 30), bg='#A202
 quiz_button11.place(relx=0.8, rely=0.75, anchor=S)
 
 
-
-
 ####### Time Frame ######
 time_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
+#Text displaying the yellow text
+text_label12 = Label(time_frame, text="When would you like this achieve this goal by", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label12.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the white text
+help_label10 = Label(time_frame, text="“I will achieve this goal by...”", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label10.place(relx=0.5, rely=0.25, anchor=CENTER)
 
 
 
