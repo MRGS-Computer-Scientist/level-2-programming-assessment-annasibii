@@ -57,6 +57,10 @@ def go_to_time_frame():
 def go_to_time_frame():
     food_frame.pack_forget()
     time_frame.pack()
+
+def go_to_time_frame():
+    gym_frame.pack_forget()
+    time_frame.pack()
   
 #############Colour of highlighted options##############
 
@@ -151,6 +155,20 @@ def change_food_color():
       food_radio3.config(bg="gray", fg="black")
       food_radio1.config(bg='#2C2A64', fg="#A6DF05")
       food_radio2.config(bg='#2C2A64', fg="#A6DF05")
+
+def change_gym_color():
+  if gym_selected_var.get() == 1:
+      gym_radio1.config(bg="gray", fg="black")
+      gym_radio2.config(bg='#2C2A64', fg="#A6DF05")
+      gym_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif gym_selected_var.get() == 2:
+      gym_radio2.config(bg="gray", fg="black")
+      gym_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      gym_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif gym_selected_var.get() == 3:
+      gym_radio3.config(bg="gray", fg="black")
+      gym_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      gym_radio2.config(bg='#2C2A64', fg="#A6DF05")
 
 
 #Created a window and set a background colour
@@ -469,6 +487,30 @@ help_label7 = Label(gym_frame, text="I want to...", font =("Verdana", 20),
 fg="white", bg="#2C2A64")
 #Positioning of this text
 help_label7.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined productivity IntVar variable which stores the selected radio buttons
+gym_selected_var = IntVar()
+
+# Creating radio buttons - ensures that only one box can be checked
+gym_radio1 = Radiobutton(gym_frame, text="Begin going gym", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=gym_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_gym_color)
+#positioning of gym button 1
+gym_radio1.place(relx=0.2, rely=0.4, anchor=W)
+
+# Creating radio buttons - ensures that only one box can be checked
+gym_radio2 = Radiobutton(gym_frame, text="Hit a new Pr (personal record)", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=gym_selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_gym_color)
+#positioning of gym button 2
+gym_radio2.place(relx=0.2, rely=0.5, anchor=W)
+
+# Creating radio buttons - ensures that only one box can be checked
+gym_radio3 = Radiobutton(gym_frame, text="Go more consistently", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=gym_selected_var, value=3, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_gym_color)
+#positioning of gym button
+gym_radio3.place(relx=0.2, rely=0.6, anchor=W)
+
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button9 = Button(gym_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
+quiz_button9.place(relx=0.8, rely=0.75, anchor=S)
+
+
 
 
 
