@@ -65,6 +65,10 @@ def go_to_time_frame():
 def go_to_time_frame():
     sport_frame.pack_forget()
     time_frame.pack()
+
+def go_to_time_frame():
+    running_frame.pack_forget()
+    time_frame.pack()
   
 #############Colour of highlighted options##############
 
@@ -187,6 +191,20 @@ def change_sport_color():
       sport_radio3.config(bg="gray", fg="black")
       sport_radio1.config(bg='#2C2A64', fg="#A6DF05")
       sport_radio2.config(bg='#2C2A64', fg="#A6DF05")
+
+def change_running_color():
+  if running_selected_var.get() == 1:
+      running_radio1.config(bg="gray", fg="black")
+      running_radio2.config(bg='#2C2A64', fg="#A6DF05")
+      running_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif running_selected_var.get() == 2:
+      running_radio2.config(bg="gray", fg="black")
+      running_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      running_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif running_selected_var.get() == 3:
+      running_radio3.config(bg="gray", fg="black")
+      running_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      running_radio2.config(bg='#2C2A64', fg="#A6DF05")
 
 #Created a window and set a background colour
 window = Tk()
@@ -565,6 +583,42 @@ quiz_button10 = Button(sport_frame,text= "Next", font=("Arial", 30), bg='#A20202
 quiz_button10.place(relx=0.8, rely=0.75, anchor=S)
 
 ##### Running Frame #####
+running_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#Text displaying the yellow text
+text_label11 = Label(running_frame, text="What Running goal would you like to focus on", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label11.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the white text
+help_label9 = Label(running_frame, text="I want to...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label9.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined productivity IntVar variable which stores the selected radio buttons
+running_selected_var = IntVar()
+
+# Creating radio buttons - ensures that only one box can be checked
+running_radio1 = Radiobutton(running_frame, text="Get into running", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=running_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_running_color)
+#positioning of running button 1
+running_radio1.place(relx=0.2, rely=0.4, anchor=W)
+
+# Creating radio buttons - ensures that only one box can be checked
+running_radio2 = Radiobutton(running_frame, text="Be more consistent with running", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=running_selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_running_color)
+#positioning of running button 2
+running_radio2.place(relx=0.2, rely=0.5, anchor=W)
+
+# Creating radio buttons - ensures that only one box can be checked
+running_radio3 = Radiobutton(running_frame, text="Be more consistent with running", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=running_selected_var, value=3, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_running_color)
+#positioning of running button 3
+running_radio3.place(relx=0.2, rely=0.6, anchor=W)
+
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button11 = Button(running_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
+quiz_button11.place(relx=0.8, rely=0.75, anchor=S)
+
 
 
 
