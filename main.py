@@ -41,18 +41,22 @@ def go_to_health_subgoal_frame():
   elif subgoal_choice == 4:
       running_frame.pack()
 
-# Created button that takes users to the next frame (based of their previous choice)
+# Created button that takes users to the next frame (based of their previous choice, and forgets the previous frame)
 def go_to_time_frame():
     studying_frame.pack_forget()
     time_frame.pack()
 
 def go_to_time_frame():
-  reading_frame.pack_forget()
-  time_frame.pack()
+    reading_frame.pack_forget()
+    time_frame.pack()
 
 def go_to_time_frame():
-  money_frame.pack_forget()
-  time_frame.pack()
+    money_frame.pack_forget()
+    time_frame.pack()
+
+def go_to_time_frame():
+    food_frame.pack_forget()
+    time_frame.pack()
   
 #############Colour of highlighted options##############
 
@@ -133,6 +137,20 @@ def change_health_color():
       sport_radio.config(bg='#2C2A64', fg="#A6DF05")
       food_radio.config(bg='#2C2A64', fg="#A6DF05")
       gym_radio.config(bg='#2C2A64', fg="#A6DF05")
+
+def change_food_color():
+  if food_selected_var.get() == 1:
+      food_radio1.config(bg="gray", fg="black")
+      food_radio2.config(bg='#2C2A64', fg="#A6DF05")
+      food_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif food_selected_var.get() == 2:
+      food_radio2.config(bg="gray", fg="black")
+      food_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      food_radio3.config(bg='#2C2A64', fg="#A6DF05")
+  elif food_selected_var.get() == 3:
+      food_radio3.config(bg="gray", fg="black")
+      food_radio1.config(bg='#2C2A64', fg="#A6DF05")
+      food_radio2.config(bg='#2C2A64', fg="#A6DF05")
 
 
 #Created a window and set a background colour
@@ -414,10 +432,27 @@ fg="white", bg="#2C2A64")
 #Positioning of this text
 help_label6.place(relx=0.5, rely=0.25, anchor=CENTER)
 
+# Defined productivity IntVar variable which stores the selected radio buttons
+food_selected_var = IntVar()
 
+# Creating radio buttons - ensures that only one box can be checked
+food_radio1 = Radiobutton(food_frame, text="Having a more healthier diet", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=food_selected_var, value=1, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_food_color)
+#positioning of food button 1
+food_radio1.place(relx=0.2, rely=0.4, anchor=W)
 
+# Creating radio buttons - ensures that only one box can be checked
+food_radio2 = Radiobutton(food_frame, text="Increase my intake of protein", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=food_selected_var, value=2, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_food_color)
+#positioning of food button 2
+food_radio2.place(relx=0.2, rely=0.5, anchor=W)
 
+# Creating radio buttons - ensures that only one box can be checked
+food_radio3 = Radiobutton(food_frame, text="Increase intake of fruits and veggies", font=("Verdana", 25),fg="#A6DF05", bg="#2C2A64", variable=food_selected_var, value=3, padx=20, pady=10,borderwidth=0, highlightthickness=0, selectcolor="#2C2A64",command=change_food_color)
+#positioning of food button
+food_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button8 = Button(food_frame,text= "Next", font=("Arial", 30), bg='#A20202', fg='white', borderwidth=7,command=go_to_time_frame)
+quiz_button8.place(relx=0.8, rely=0.75, anchor=S)
 
 
 ####### Time Frame ######
