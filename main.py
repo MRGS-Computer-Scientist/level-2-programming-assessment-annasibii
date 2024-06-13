@@ -455,6 +455,23 @@ quiz_button8 = Button(food_frame,text= "Next", font=("Arial", 30), bg='#A20202',
 quiz_button8.place(relx=0.8, rely=0.75, anchor=S)
 
 
+###### Gym frame ######
+gym_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#Text displaying the yellow text
+text_label9 = Label(gym_frame, text="What Gym goal would you like to focus on", font =("Verdana", 30),
+fg="#FBFF37", bg="#2C2A64")
+#Positioning of this text
+text_label9.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the white text
+help_label7 = Label(gym_frame, text="I want to...", font =("Verdana", 20),
+fg="white", bg="#2C2A64")
+#Positioning of this text
+help_label7.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+
+
 ####### Time Frame ######
 time_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
