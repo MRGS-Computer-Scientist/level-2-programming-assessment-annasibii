@@ -254,6 +254,19 @@ def change_running_color():
         running_radio1.config(bg='#2C2A64', fg="#A6DF05")
         running_radio2.config(bg='#2C2A64', fg="#A6DF05")
 
+def change_time_color():
+    if time_selected_var.get() == 1:
+        time_radio1.config(bg="gray", fg="black")
+        time_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        time_radio3.config(bg='#2C2A64', fg="#A6DF05")
+    elif time_selected_var.get() == 2:
+        time_radio2.config(bg="gray", fg="black")
+        time_radio1.config(bg='#2C2A64', fg="#A6DF05")
+        time_radio3.config(bg='#2C2A64', fg="#A6DF05")
+    elif time_selected_var.get() == 3:
+        time_radio3.config(bg="gray", fg="black")
+        time_radio1.config(bg='#2C2A64', fg="#A6DF05")
+        time_radio2.config(bg='#2C2A64', fg="#A6DF05")
 
 #Created a window and set a background colour
 window = Tk()
@@ -1159,5 +1172,61 @@ help_label10 = Label(time_frame,
                      bg="#2C2A64")
 #Positioning of this text
 help_label10.place(relx=0.5, rely=0.25, anchor=CENTER)
+
+# Defined productivity IntVar variable which stores the selected radio buttons
+time_selected_var = IntVar()
+
+# Creating radio buttons - ensures that only one box can be checked
+time_radio1 = Radiobutton(time_frame,
+                             text="End Of This Week",
+                             font=("Verdana", 25),
+                             fg="#A6DF05",
+                             bg="#2C2A64",
+                             variable=time_selected_var,
+                             value=1,
+                             padx=20,
+                             pady=10,
+                             borderwidth=0,
+                             highlightthickness=0,
+                             selectcolor="#2C2A64",
+                             command=change_time_color)
+#positioning of time button 1
+time_radio1.place(relx=0.2, rely=0.4, anchor=W)
+
+# Creating radio buttons - ensures that only one box can be checked
+time_radio2 = Radiobutton(time_frame,
+                             text="End Of This Month",
+                             font=("Verdana", 25),
+                             fg="#A6DF05",
+                             bg="#2C2A64",
+                             variable=time_selected_var,
+                             value=2,
+                             padx=20,
+                             pady=10,
+                             borderwidth=0,
+                             highlightthickness=0,
+                             selectcolor="#2C2A64",
+                             command=change_time_color)
+#positioning of time button 2
+time_radio2.place(relx=0.2, rely=0.5, anchor=W)
+
+# Creating radio buttons - ensures that only one box can be checked
+time_radio3 = Radiobutton(time_frame,
+                             text="End Of This Year",
+                             font=("Verdana", 25),
+                             fg="#A6DF05",
+                             bg="#2C2A64",
+                             variable=time_selected_var,
+                             value=3,
+                             padx=20,
+                             pady=10,
+                             borderwidth=0,
+                             highlightthickness=0,
+                             selectcolor="#2C2A64",
+                             command=change_time_color)
+#positioning of time button 3
+time_radio3.place(relx=0.2, rely=0.6, anchor=W)
+
+
 
 window.mainloop()
