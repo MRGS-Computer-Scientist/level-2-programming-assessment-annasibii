@@ -47,15 +47,20 @@ def go_to_productivity_subgoal_frame():
 
 #Takes users into frame based of their health goal choice
 def go_to_health_subgoal_frame():
+    global current_frame
     subgoal_choice = health_selected_var.get()
     health_frame.pack_forget()
     if subgoal_choice == 1:
+        current_frame = "food_frame"
         food_frame.pack()
     elif subgoal_choice == 2:
+        current_frame = "gym_frame"
         gym_frame.pack()
     elif subgoal_choice == 3:
+        current_frame = "sport_frame"
         sport_frame.pack()
     elif subgoal_choice == 4:
+        current_frame = "running_frame"
         running_frame.pack()
 
 
@@ -75,6 +80,22 @@ def go_to_time_frame():
         time_frame.pack()
     elif current_frame == "money_frame":
         money_frame.pack_forget()
+        current_frame = "time_frame"
+        time_frame.pack()
+    elif current_frame == "food_frame":
+        food_frame.pack_forget()
+        current_frame = "time_frame"
+        time_frame.pack()
+    elif current_frame == "gym_frame":
+        gym_frame.pack_forget()
+        current_frame = "time_frame"
+        time_frame.pack()
+    elif current_frame == "sport_frame":
+        sport_frame.pack_forget()
+        current_frame = "time_frame"
+        time_frame.pack()
+    elif current_frame == "running_frame":
+        running_frame.pack_forget()
         current_frame = "time_frame"
         time_frame.pack()
 
@@ -1127,7 +1148,7 @@ running_radio2.place(relx=0.2, rely=0.5, anchor=W)
 
 # Creating radio buttons - ensures that only one box can be checked
 running_radio3 = Radiobutton(running_frame,
-                             text="Be more consistent with running",
+                             text="Run 2 laps at the park",
                              font=("Verdana", 25),
                              fg="#A6DF05",
                              bg="#2C2A64",
