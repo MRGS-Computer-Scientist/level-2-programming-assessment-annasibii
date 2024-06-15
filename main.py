@@ -99,6 +99,13 @@ def go_to_time_frame():
         current_frame = "time_frame"
         time_frame.pack()
 
+def go_to_result_frame():
+    global current_frame
+    time_frame.pack_forget()
+    current_frame = "result_frame"
+    result_frame.pack()
+
+
 '''
 def go_to_time_frame():
     studying_frame.pack_forget()
@@ -292,7 +299,7 @@ def change_time_color():
 #Created a window and set a background colour
 window = Tk()
 window.geometry("1280x800")
-window.title("My App")
+window.title("My Goalie")
 window['bg'] = '#2C2A64'
 
 top_frame = Frame(window, width=1280, height=85, bg='#2C2A64')
@@ -1046,7 +1053,7 @@ sport_radio1.place(relx=0.2, rely=0.4, anchor=W)
 
 # Creating radio buttons - ensures that only one box can be checked
 sport_radio2 = Radiobutton(sport_frame,
-                           text="Master a sport's skill",
+                           text="Master a sport skill",
                            font=("Verdana", 25),
                            fg="#A6DF05",
                            bg="#2C2A64",
@@ -1248,6 +1255,35 @@ time_radio3 = Radiobutton(time_frame,
 #positioning of time button 3
 time_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
+#Created button that takes users to the next frame (based of their previous choice)
+quiz_button12 = Button(time_frame,
+                       text="Next",
+                       font=("Arial", 30),
+                       bg='#A20202',
+                       fg='white',
+                       borderwidth=7,
+                       command=go_to_result_frame)
+quiz_button12.place(relx=0.8, rely=0.75, anchor=S)
 
+##### Result Frame ####
+result_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+#Text displaying the yellow text
+text_label13 = Label(result_frame,
+                     text="This is your personalised goal!",
+                     font=("Verdana", 30),
+                     fg="#FBFF37",
+                     bg="#2C2A64")
+#Positioning of this text
+text_label13.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+#Text displaying the yellow text
+text_label14 = Label(result_frame,
+                     text="(Take a screenshot to remember)",
+                     font=("Verdana", 18),
+                     fg="#FBFF37",
+                     bg="#2C2A64")
+#Positioning of this text
+text_label14.place(relx=0.5, rely=0.22, anchor=CENTER)
 
 window.mainloop()
