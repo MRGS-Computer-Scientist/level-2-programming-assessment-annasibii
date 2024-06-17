@@ -293,46 +293,76 @@ def change_gym_color():
         gym_radio1.config(bg="gray", fg="black")
         gym_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
         gym_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Gym"
+        selected_goal = "begin going gym"
     elif gym_selected_var.get() == 2:
         gym_radio2.config(bg="gray", fg="black")
         gym_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
         gym_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Gym"
+        selected_goal = "hit a new Pr (personal record)"
     elif gym_selected_var.get() == 3:
         gym_radio3.config(bg="gray", fg="black")
         gym_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
         gym_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Gym"
+        selected_goal = "go more consistently"
 
 
 def change_sport_color():
     global selected_catagory, selected_goal
     if sport_selected_var.get() == 1:
         sport_radio1.config(bg="gray", fg="black")
-        sport_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
-        sport_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        sport_radio2.config(bg=radio_button_bg_color, 
+         fg="#A6DF05")
+        sport_radio3.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        selected_catagory = "Sport"
+        selected_goal = "learn a new sport"
     elif sport_selected_var.get() == 2:
         sport_radio2.config(bg="gray", fg="black")
-        sport_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
-        sport_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        sport_radio1.config(bg=radio_button_bg_color, 
+         fg="#A6DF05")
+        sport_radio3.config(bg=radio_button_bg_color, 
+         fg="#A6DF05")
+        selected_catagory = "Sport"
+        selected_goal = "master a sport skill"
     elif sport_selected_var.get() == 3:
         sport_radio3.config(bg="gray", fg="black")
-        sport_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
-        sport_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        sport_radio1.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        sport_radio2.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        selected_catagory = "Sport"
+        selected_goal = "consistently play sport"
 
 
 def change_running_color():
     global selected_catagory, selected_goal
     if running_selected_var.get() == 1:
         running_radio1.config(bg="gray", fg="black")
-        running_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
-        running_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio2.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        running_radio3.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        selected_catagory = "Running"
+        selected_goal = "get into running"
     elif running_selected_var.get() == 2:
         running_radio2.config(bg="gray", fg="black")
-        running_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
-        running_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio1.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        running_radio3.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        selected_catagory = "Running"
+        selected_goal = "be more consistent with running"
     elif running_selected_var.get() == 3:
         running_radio3.config(bg="gray", fg="black")
-        running_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
-        running_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio1.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        running_radio2.config(bg=radio_button_bg_color, 
+        fg="#A6DF05")
+        selected_catagory = "Running"
+        selected_goal = "Run 2 laps at the park"
 
 
 def change_time_color():
@@ -470,14 +500,14 @@ productivity_radio.place(relx=0.2, rely=0.4, anchor=W)
 health_radio.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created a next button -> takes users to the next frame (based of their choice)
-quiz_button2 = Button(quiz_frame,
+next_button = Button(quiz_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_next_frame)
-quiz_button2.place(relx=0.8, rely=0.75, anchor=S)
+next_button.place(relx=0.8, rely=0.75, anchor=S)
 
 ######## Productivity Frame ########
 productivity_frame = Frame(window,
@@ -557,14 +587,14 @@ money_radio = Radiobutton(productivity_frame,
 money_radio.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button3 = Button(productivity_frame,
+next_button2 = Button(productivity_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_productivity_subgoal_frame)
-quiz_button3.place(relx=0.8, rely=0.75, anchor=S)
+next_button2.place(relx=0.8, rely=0.75, anchor=S)
 
 ######### The diff types of Productivity subgoals#####
 
@@ -627,14 +657,14 @@ study_radio2 = Radiobutton(studying_frame,
 study_radio2.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button4 = Button(studying_frame,
+next_button3 = Button(studying_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_time_frame)
-quiz_button4.place(relx=0.8, rely=0.75, anchor=S)
+next_button3.place(relx=0.8, rely=0.75, anchor=S)
 
 #########
 
@@ -714,14 +744,14 @@ reading_radio3 = Radiobutton(reading_frame,
 reading_radio3.place(relx=0.2, rely=0.7, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button5 = Button(reading_frame,
+next_button4 = Button(reading_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_time_frame)
-quiz_button5.place(relx=0.8, rely=0.75, anchor=S)
+next_button4.place(relx=0.8, rely=0.75, anchor=S)
 
 #### Money frame ####
 money_frame = Frame(window, width=1280, height=800, background='#2C2A64')
@@ -782,14 +812,14 @@ money_radio2 = Radiobutton(money_frame,
 money_radio2.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button6 = Button(money_frame,
+next_button5 = Button(money_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_time_frame)
-quiz_button6.place(relx=0.8, rely=0.75, anchor=S)
+next_button5.place(relx=0.8, rely=0.75, anchor=S)
 
 ##########
 
@@ -887,14 +917,14 @@ running_radio = Radiobutton(health_frame,
 running_radio.place(relx=0.2, rely=0.7, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button7 = Button(health_frame,
+next_button6 = Button(health_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_health_subgoal_frame)
-quiz_button7.place(relx=0.8, rely=0.75, anchor=S)
+next_button6.place(relx=0.8, rely=0.75, anchor=S)
 
 ######### The diff types of Health subgoals#####
 
@@ -974,14 +1004,14 @@ food_radio3 = Radiobutton(food_frame,
 food_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button8 = Button(food_frame,
+next_button7 = Button(food_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_time_frame)
-quiz_button8.place(relx=0.8, rely=0.75, anchor=S)
+next_button7.place(relx=0.8, rely=0.75, anchor=S)
 
 ###### Gym frame ######
 gym_frame = Frame(window, width=1280, height=800, background='#2C2A64')
@@ -1059,14 +1089,14 @@ gym_radio3 = Radiobutton(gym_frame,
 gym_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button9 = Button(gym_frame,
+next_button8 = Button(gym_frame,
                       text="Next",
                       font=("Arial", 30),
                       bg='#A20202',
                       fg='white',
                       borderwidth=7,
                       command=go_to_time_frame)
-quiz_button9.place(relx=0.8, rely=0.75, anchor=S)
+next_button8.place(relx=0.8, rely=0.75, anchor=S)
 
 ##### Sport Frame ######
 sport_frame = Frame(window, width=1280, height=800, background='#2C2A64')
@@ -1144,14 +1174,14 @@ sport_radio3 = Radiobutton(sport_frame,
 sport_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button10 = Button(sport_frame,
+next_button9 = Button(sport_frame,
                        text="Next",
                        font=("Arial", 30),
                        bg='#A20202',
                        fg='white',
                        borderwidth=7,
                        command=go_to_time_frame)
-quiz_button10.place(relx=0.8, rely=0.75, anchor=S)
+next_button9.place(relx=0.8, rely=0.75, anchor=S)
 
 ##### Running Frame #####
 running_frame = Frame(window, width=1280, height=800, background='#2C2A64')
@@ -1229,14 +1259,14 @@ running_radio3 = Radiobutton(running_frame,
 running_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button11 = Button(running_frame,
+next_button10 = Button(running_frame,
                        text="Next",
                        font=("Arial", 30),
                        bg='#A20202',
                        fg='white',
                        borderwidth=7,
                        command=go_to_time_frame)
-quiz_button11.place(relx=0.8, rely=0.75, anchor=S)
+next_button10.place(relx=0.8, rely=0.75, anchor=S)
 
 ####### Time Frame ######
 time_frame = Frame(window, width=1280, height=800, background='#2C2A64')
@@ -1314,14 +1344,14 @@ time_radio3 = Radiobutton(time_frame,
 time_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
 #Created button that takes users to the next frame (based of their previous choice)
-quiz_button12 = Button(time_frame,
+next_button11 = Button(time_frame,
                        text="Next",
                        font=("Arial", 30),
                        bg='#A20202',
                        fg='white',
                        borderwidth=7,
                        command=go_to_result_frame)
-quiz_button12.place(relx=0.8, rely=0.75, anchor=S)
+next_button11.place(relx=0.8, rely=0.75, anchor=S)
 
 ##### Result Frame ####
 result_frame = Frame(window, width=1280, height=800, background='#2C2A64')
@@ -1349,13 +1379,13 @@ goal_message_label = Label(result_frame,
                            font=("Verdana", 20),
                            fg="white",
                            bg="#2C2A64", wraplength=500)
-goal_message_label.place(relx=0.5, rely=0.35, anchor=CENTER)
+goal_message_label.place(relx=0.5, rely=0.39, anchor=CENTER)
 
 email_help_label = Label(result_frame, text="Please enter your email to receive your results")
-email_help_label.place(relx=0.5, rely=0.75, anchor=CENTER)
+email_help_label.place(relx=0.5, rely=0.65, anchor=CENTER)
 
 
-email_entry = Text(result_frame, width=40, height=15)
+email_entry = Text(result_frame, width=25, height=2)
 email_entry.place(relx=0.5, rely=0.75, anchor=CENTER)
 
 
