@@ -2,6 +2,15 @@ from tkinter import *
 
 current_frame = "start_frame"
 
+#Name of some variables
+selected_catagory = ""
+selected_timeframe = ""
+selected_goal = ""
+
+# Colour Palette
+radio_button_bg_color = '#2C2A64'
+radio_button_fg_color = '#A6DF05'
+
 
 ##### where each frame leads to ######
 def go_to_quiz_frame():
@@ -99,11 +108,18 @@ def go_to_time_frame():
         current_frame = "time_frame"
         time_frame.pack()
 
+
 def go_to_result_frame():
     global current_frame
     time_frame.pack_forget()
     current_frame = "result_frame"
     result_frame.pack()
+
+    #The goal message (displayed at end)
+    goal_message = f"My goal is focused on {selected_catagory}. I want to {selected_goal} and I will achieve this goal by the {selected_timeframe}."
+
+    #Replaces blank goal message with the correct goal message but only until user has played quiz
+    goal_message_label.config(text=goal_message)
 
 
 '''
@@ -143,164 +159,206 @@ def go_to_time_frame():
 def change_color():
     if selected_var.get() == 1:
         productivity_radio.config(bg="gray", fg="black")
-        health_radio.config(bg='#2C2A64', fg="#A6DF05")
+        health_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
     elif selected_var.get() == 2:
         health_radio.config(bg="gray", fg="black")
-        productivity_radio.config(bg='#2C2A64', fg="#A6DF05")
+        productivity_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
 
 
 #Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_productivity_color():
+    global selected_catagory
     if productivity_selected_var.get() == 1:
         studying_radio.config(bg="gray", fg="black")
-        reading_radio.config(bg='#2C2A64', fg="#A6DF05")
-        money_radio.config(bg='#2C2A64', fg="#A6DF05")
+        reading_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        money_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Studying"
     elif productivity_selected_var.get() == 2:
         reading_radio.config(bg="gray", fg="black")
-        studying_radio.config(bg='#2C2A64', fg="#A6DF05")
-        money_radio.config(bg='#2C2A64', fg="#A6DF05")
+        studying_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        money_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Reading"
     elif productivity_selected_var.get() == 3:
         money_radio.config(bg="gray", fg="black")
-        studying_radio.config(bg='#2C2A64', fg="#A6DF05")
-        reading_radio.config(bg='#2C2A64', fg="#A6DF05")
+        studying_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        reading_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Money"
 
 
 #Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_studying_color():
+    global selected_catagory, selected_goal
     if studying_selected_var.get() == 1:
         study_radio1.config(bg="gray", fg="black")
-        study_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        study_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "studying"
+        selected_goal = "study 2 hours each day"
     elif studying_selected_var.get() == 2:
         study_radio2.config(bg="gray", fg="black")
-        study_radio1.config(bg='#2C2A64', fg="#A6DF05")
+        study_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Studying"
+        selected_goal = "finish my homework"
 
 
 def change_reading_color():
+    global selected_catagory, selected_goal
     if reading_selected_var.get() == 1:
         reading_radio1.config(bg="gray", fg="black")
-        reading_radio2.config(bg='#2C2A64', fg="#A6DF05")
-        reading_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        reading_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        reading_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Reading"
+        selected_goal = "Read 1 book"
     elif reading_selected_var.get() == 2:
         reading_radio2.config(bg="gray", fg="black")
-        reading_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        reading_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        reading_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        reading_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Reading"
+        selected_goal = "Read 5 books"
     elif reading_selected_var.get() == 3:
         reading_radio3.config(bg="gray", fg="black")
-        reading_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        reading_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        reading_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        reading_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Reading"
+        selected_goal = "Read 10 books"
 
 
 def change_money_color():
+    global selected_catagory, selected_goal
     if money_selected_var.get() == 1:
         money_radio1.config(bg="gray", fg="black")
-        money_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        money_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Money"
+        selected_goal = "Make more money"
     elif money_selected_var.get() == 2:
         money_radio2.config(bg="gray", fg="black")
-        money_radio1.config(bg='#2C2A64', fg="#A6DF05")
+        money_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Money"
+        selected_goal = "Get a job"
 
 
 #Gives different highlight colours to the buttons depending on which ones are selected/not selected
 def change_health_color():
+    global selected_catagory
     if health_selected_var.get() == 1:
         food_radio.config(bg="gray", fg="black")
-        gym_radio.config(bg='#2C2A64', fg="#A6DF05")
-        sport_radio.config(bg='#2C2A64', fg="#A6DF05")
-        running_radio.config(bg='#2C2A64', fg="#A6DF05")
+        gym_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        sport_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Food"
     elif health_selected_var.get() == 2:
         gym_radio.config(bg="gray", fg="black")
-        sport_radio.config(bg='#2C2A64', fg="#A6DF05")
-        running_radio.config(bg='#2C2A64', fg="#A6DF05")
-        food_radio.config(bg='#2C2A64', fg="#A6DF05")
+        sport_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        food_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Gym"
     elif health_selected_var.get() == 3:
         sport_radio.config(bg="gray", fg="black")
-        running_radio.config(bg='#2C2A64', fg="#A6DF05")
-        food_radio.config(bg='#2C2A64', fg="#A6DF05")
-        gym_radio.config(bg='#2C2A64', fg="#A6DF05")
+        running_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        food_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        gym_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Sport"
     elif health_selected_var.get() == 4:
         running_radio.config(bg="gray", fg="black")
-        sport_radio.config(bg='#2C2A64', fg="#A6DF05")
-        food_radio.config(bg='#2C2A64', fg="#A6DF05")
-        gym_radio.config(bg='#2C2A64', fg="#A6DF05")
+        sport_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        food_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        gym_radio.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Running"
 
 
 def change_food_color():
+    global selected_catagory, selected_goal
     if food_selected_var.get() == 1:
         food_radio1.config(bg="gray", fg="black")
-        food_radio2.config(bg='#2C2A64', fg="#A6DF05")
-        food_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        food_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        food_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Food"
+        selected_goal = "have a more healthier diet"
     elif food_selected_var.get() == 2:
         food_radio2.config(bg="gray", fg="black")
-        food_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        food_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        food_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        food_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Food"
+        selected_goal = "increase my intake of protein "
     elif food_selected_var.get() == 3:
         food_radio3.config(bg="gray", fg="black")
-        food_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        food_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        food_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        food_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_catagory = "Food"
+        selected_goal = "increase my intake of fruits and veggies"
 
 
 def change_gym_color():
+    global selected_catagory, selected_goal
     if gym_selected_var.get() == 1:
         gym_radio1.config(bg="gray", fg="black")
-        gym_radio2.config(bg='#2C2A64', fg="#A6DF05")
-        gym_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        gym_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        gym_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
     elif gym_selected_var.get() == 2:
         gym_radio2.config(bg="gray", fg="black")
-        gym_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        gym_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        gym_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        gym_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
     elif gym_selected_var.get() == 3:
         gym_radio3.config(bg="gray", fg="black")
-        gym_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        gym_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        gym_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        gym_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
 
 
 def change_sport_color():
+    global selected_catagory, selected_goal
     if sport_selected_var.get() == 1:
         sport_radio1.config(bg="gray", fg="black")
-        sport_radio2.config(bg='#2C2A64', fg="#A6DF05")
-        sport_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        sport_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        sport_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
     elif sport_selected_var.get() == 2:
         sport_radio2.config(bg="gray", fg="black")
-        sport_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        sport_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        sport_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        sport_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
     elif sport_selected_var.get() == 3:
         sport_radio3.config(bg="gray", fg="black")
-        sport_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        sport_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        sport_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        sport_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
 
 
 def change_running_color():
+    global selected_catagory, selected_goal
     if running_selected_var.get() == 1:
         running_radio1.config(bg="gray", fg="black")
-        running_radio2.config(bg='#2C2A64', fg="#A6DF05")
-        running_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        running_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
     elif running_selected_var.get() == 2:
         running_radio2.config(bg="gray", fg="black")
-        running_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        running_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        running_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
     elif running_selected_var.get() == 3:
         running_radio3.config(bg="gray", fg="black")
-        running_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        running_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        running_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        running_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+
 
 def change_time_color():
+    global current_frame, selected_timeframe
     if time_selected_var.get() == 1:
         time_radio1.config(bg="gray", fg="black")
-        time_radio2.config(bg='#2C2A64', fg="#A6DF05")
-        time_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        time_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        time_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_timeframe = "end of this week"
     elif time_selected_var.get() == 2:
         time_radio2.config(bg="gray", fg="black")
-        time_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        time_radio3.config(bg='#2C2A64', fg="#A6DF05")
+        time_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        time_radio3.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_timeframe = "end of this month"
     elif time_selected_var.get() == 3:
         time_radio3.config(bg="gray", fg="black")
-        time_radio1.config(bg='#2C2A64', fg="#A6DF05")
-        time_radio2.config(bg='#2C2A64', fg="#A6DF05")
+        time_radio1.config(bg=radio_button_bg_color, fg="#A6DF05")
+        time_radio2.config(bg=radio_button_bg_color, fg="#A6DF05")
+        selected_timeframe = "end of this year"
+
 
 #Created a window and set a background colour
 window = Tk()
 window.geometry("1280x800")
 window.title("My Goalie")
-window['bg'] = '#2C2A64'
+window['bg'] = radio_button_bg_color
 
 top_frame = Frame(window, width=1280, height=85, bg='#2C2A64')
 #Keeping the same width and height of the frame. By default, frames only take up as much space as they need.
@@ -866,7 +924,7 @@ food_selected_var = IntVar()
 
 # Creating radio buttons - ensures that only one box can be checked
 food_radio1 = Radiobutton(food_frame,
-                          text="Having a more healthier diet",
+                          text="Have a more healthier diet",
                           font=("Verdana", 25),
                           fg="#A6DF05",
                           bg="#2C2A64",
@@ -1206,52 +1264,52 @@ time_selected_var = IntVar()
 
 # Creating radio buttons - ensures that only one box can be checked
 time_radio1 = Radiobutton(time_frame,
-                             text="End Of This Week",
-                             font=("Verdana", 25),
-                             fg="#A6DF05",
-                             bg="#2C2A64",
-                             variable=time_selected_var,
-                             value=1,
-                             padx=20,
-                             pady=10,
-                             borderwidth=0,
-                             highlightthickness=0,
-                             selectcolor="#2C2A64",
-                             command=change_time_color)
+                          text="End Of This Week",
+                          font=("Verdana", 25),
+                          fg="#A6DF05",
+                          bg="#2C2A64",
+                          variable=time_selected_var,
+                          value=1,
+                          padx=20,
+                          pady=10,
+                          borderwidth=0,
+                          highlightthickness=0,
+                          selectcolor="#2C2A64",
+                          command=change_time_color)
 #positioning of time button 1
 time_radio1.place(relx=0.2, rely=0.4, anchor=W)
 
 # Creating radio buttons - ensures that only one box can be checked
 time_radio2 = Radiobutton(time_frame,
-                             text="End Of This Month",
-                             font=("Verdana", 25),
-                             fg="#A6DF05",
-                             bg="#2C2A64",
-                             variable=time_selected_var,
-                             value=2,
-                             padx=20,
-                             pady=10,
-                             borderwidth=0,
-                             highlightthickness=0,
-                             selectcolor="#2C2A64",
-                             command=change_time_color)
+                          text="End Of This Month",
+                          font=("Verdana", 25),
+                          fg="#A6DF05",
+                          bg="#2C2A64",
+                          variable=time_selected_var,
+                          value=2,
+                          padx=20,
+                          pady=10,
+                          borderwidth=0,
+                          highlightthickness=0,
+                          selectcolor="#2C2A64",
+                          command=change_time_color)
 #positioning of time button 2
 time_radio2.place(relx=0.2, rely=0.5, anchor=W)
 
 # Creating radio buttons - ensures that only one box can be checked
 time_radio3 = Radiobutton(time_frame,
-                             text="End Of This Year",
-                             font=("Verdana", 25),
-                             fg="#A6DF05",
-                             bg="#2C2A64",
-                             variable=time_selected_var,
-                             value=3,
-                             padx=20,
-                             pady=10,
-                             borderwidth=0,
-                             highlightthickness=0,
-                             selectcolor="#2C2A64",
-                             command=change_time_color)
+                          text="End Of This Year",
+                          font=("Verdana", 25),
+                          fg="#A6DF05",
+                          bg="#2C2A64",
+                          variable=time_selected_var,
+                          value=3,
+                          padx=20,
+                          pady=10,
+                          borderwidth=0,
+                          highlightthickness=0,
+                          selectcolor="#2C2A64",
+                          command=change_time_color)
 #positioning of time button 3
 time_radio3.place(relx=0.2, rely=0.6, anchor=W)
 
@@ -1285,5 +1343,20 @@ text_label14 = Label(result_frame,
                      bg="#2C2A64")
 #Positioning of this text
 text_label14.place(relx=0.5, rely=0.22, anchor=CENTER)
+
+goal_message_label = Label(result_frame,
+                           text="",
+                           font=("Verdana", 20),
+                           fg="white",
+                           bg="#2C2A64", wraplength=500)
+goal_message_label.place(relx=0.5, rely=0.35, anchor=CENTER)
+
+email_help_label = Label(result_frame, text="Please enter your email to receive your results")
+email_help_label.place(relx=0.5, rely=0.75, anchor=CENTER)
+
+
+email_entry = Text(result_frame, width=40, height=15)
+email_entry.place(relx=0.5, rely=0.75, anchor=CENTER)
+
 
 window.mainloop()
