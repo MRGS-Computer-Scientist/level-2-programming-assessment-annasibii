@@ -20,6 +20,20 @@ def go_to_quiz_frame():
     quiz_frame.pack()
     #Hide the start frame
 
+def go_to_start_frame():
+    #Goes through all the child frames of the main window
+    for frame in window.winfo_children():
+        if frame != start_frame and frame != top_frame:
+            frame.pack_forget()
+    start_frame.pack()
+    top_frame.pack()
+
+def go_to_aboutus_frame():
+    for frame in window.winfo_children():
+        if frame != aboutus_frame and frame != top_frame:
+            frame.pack_forget()
+    aboutus_frame.pack()
+    top_frame.pack()
 
 def go_to_next_frame():
     global current_frame
@@ -395,12 +409,6 @@ top_frame = Frame(window, width=1280, height=85, bg='#2C2A64')
 top_frame.pack_propagate(False)
 top_frame.pack()
 
-#Creating a frame that holds all the widgets
-start_frame = Frame(window, width=1280, height=700, background='#2C2A64')
-start_frame.pack()
-#Maintains frame size with specified width and height
-start_frame.pack_propagate(0)
-
 #Added my logo image and edited the appearance
 img = PhotoImage(file="applogo.png")
 #This resizes the original picture by a factor of 6
@@ -418,6 +426,45 @@ text_label = Label(top_frame,
                    bg="#2C2A64")
 #Positioning of this text
 text_label.place(relx=0.09, rely=0.01, anchor=NW)
+
+home_button = Button(top_frame,
+                     text="Home",
+                     font=("Arial", 15),
+                     bg='white',
+                     fg='black',
+                     borderwidth=2,
+                     command=go_to_start_frame)
+home_button.place(relx=0.8, rely=0.75, anchor=S)
+
+aboutus_button = Button(top_frame,
+                     text="About us",
+                     font=("Arial", 15),
+                     bg='white',
+                     fg='black',
+                     borderwidth=2,
+                     command=go_to_aboutus_frame)
+aboutus_button.place(relx=0.9, rely=0.75, anchor=S)
+
+aboutus_frame = Frame(window, 
+                      width=1280, 
+                      height=700,
+                      background='#2C2A64')
+
+aboutus_label = Label(aboutus_frame,
+                     text="About Us",
+                     font=("Verdana", 30),
+                     fg="#FBFF37",
+                     bg="#2C2A64")
+#Positioning of this text
+aboutus_label.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+##### Start Frame #####
+
+#Creating a frame that holds all the widgets
+start_frame = Frame(window, width=1280, height=700, background='#2C2A64')
+start_frame.pack()
+#Maintains frame size with specified width and height
+start_frame.pack_propagate(0)
 
 #Text displaying the yellow text
 text_label2 = Label(
