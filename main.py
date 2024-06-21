@@ -123,7 +123,7 @@ def create_radio_buttons(options_list, current_frame):
                                text=option,
                                font=("Verdana", 25),
                                fg="#A6DF05",
-                               bg="#2C2A64",
+                               bg=radio_button_bg_color,
                                variable=selected_option,
                                value=index,
                                padx=20,
@@ -143,7 +143,7 @@ def selected_radio_button():
   global radio_button_list, next_frame
 
   for radio_button in radio_button_list:
-    radio_button.config(fg="#A6DF05", bg="#2C2A64")
+    radio_button.config(fg="#A6DF05", bg=radio_button_bg_color)
 
   radio_button_list[selected_option.get()].config(bg="grey", fg="black")
   next_frame = radio_button_list[selected_option.get()]['text']
@@ -154,7 +154,7 @@ def update_frame(text_label):
 
 
 #### Top Frame ####
-top_frame = Frame(window, width=1280, height=85, bg='#2C2A64')
+top_frame = Frame(window, width=1280, height=85, bg=radio_button_bg_color)
 #Keeping the same width and height of the frame. By default, frames only take up as much space as they need.
 top_frame.pack_propagate(False)
 top_frame.pack()
@@ -173,7 +173,7 @@ text_label = Label(top_frame,
                    text="My Goalie",
                    font=("Georgia", 48),
                    fg="#98D8DD",
-                   bg="#2C2A64")
+                   bg=radio_button_bg_color)
 #Positioning of this text
 text_label.place(relx=0.09, rely=0.01, anchor=NW)
 
@@ -211,7 +211,7 @@ question_label = Label(
     text="Are you curious to discover and work towards a personalised goal?",
     font=("Verdana", 25),
     fg="#FBFF37",
-    bg="#2C2A64")
+    bg=radio_button_bg_color)
 #Positioning of this text
 question_label.place(relx=0.5, rely=0.25, anchor=CENTER)
 
@@ -221,7 +221,7 @@ action_label = Label(
     text="Take the quiz below to begin your journey towards success!",
     font=("Verdana", 20),
     fg="#A6DF05",
-    bg="#2C2A64")
+    bg=radio_button_bg_color)
 #Positioning of this text
 action_label.place(relx=0.5, rely=0.45, anchor=CENTER)
 
@@ -245,7 +245,7 @@ goalarea_label = Label(quiz_frame,
                        text="What area would you like your goal to focus on?",
                        font=("Verdana", 30),
                        fg="#FBFF37",
-                       bg="#2C2A64")
+                       bg=radio_button_bg_color)
 #Positioning of this text
 goalarea_label.place(relx=0.5, rely=0.15, anchor=CENTER)
 
@@ -264,28 +264,28 @@ next_button.place(relx=0.8, rely=0.75, anchor=S)
 result_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
 #Text displaying the yellow text
-text_label13 = Label(result_frame,
+goalresult_label13 = Label(result_frame,
                      text="This is your personalised goal!",
                      font=("Verdana", 30),
                      fg="#FBFF37",
-                     bg="#2C2A64")
+                     bg=radio_button_bg_color)
 #Positioning of this text
-text_label13.place(relx=0.5, rely=0.15, anchor=CENTER)
+goalresult_label13.place(relx=0.5, rely=0.15, anchor=CENTER)
 
 #Text displaying the yellow text
-text_label14 = Label(result_frame,
+screenshot_label14 = Label(result_frame,
                      text="(Take a screenshot to remember)",
                      font=("Verdana", 18),
                      fg="#FBFF37",
-                     bg="#2C2A64")
+                     bg=radio_button_bg_color)
 #Positioning of this text
-text_label14.place(relx=0.5, rely=0.22, anchor=CENTER)
+screenshot_label14.place(relx=0.5, rely=0.22, anchor=CENTER)
 
 goal_message_label = Label(result_frame,
                            text="",
                            font=("Verdana", 20),
                            fg="white",
-                           bg="#2C2A64",
+                           bg=radio_button_bg_color,
                            wraplength=500)
 goal_message_label.place(relx=0.5, rely=0.39, anchor=CENTER)
 
