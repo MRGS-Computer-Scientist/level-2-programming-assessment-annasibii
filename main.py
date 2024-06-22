@@ -2,16 +2,17 @@ from tkinter import *
 
 window = Tk()
 
-# Colour Palette
+# Colour Palette (in order: Purple, Green, Yellow)
 radio_button_bg_color = '#2C2A64'
 radio_button_fg_color = '#A6DF05'
+radio_button_fg1_color = '#FBFF37'
 
 radio_button_list = []
 
 current_options = []
 quiz_options = ["Productivity", "Health"]
 productivity_options = ["Studying", "Reading", "Money"]
-health_options = ["Food", "Gym", "Sports", "Running"]
+health_options = ["Food", "Gym", "Sport", "Running"]
 studying_options = ["Study 2 hours each day", "Finish my homework"]
 reading_options = ["Read 1 book", "Read 5 books", "Read 10 books"]
 money_options = ["Make more money", "Get a job"]
@@ -88,23 +89,28 @@ def go_to_next_frame():
     quiz_frame.pack()
   elif current_mode == "TIME MODE":
     create_radio_buttons(time_options, quiz_frame)
-    update_frame("What time?")
+    update_frame("When would you like to achieve this goal by?")
     current_mode = "RESULT MODE"
   elif current_mode == "RESULT MODE":
 
     print(selected_goals)
     quiz_frame.pack_forget()
+
+    category = selected_goals[-3]
+    specific_goal = selected_goals[-2]
+    timeframe = selected_goals[-1]
+    
     goal_message_label.config(
         text=
-        f"You want to focus on {selected_goals[1]}, specifically on {selected_goals[2]}"
-    )
+        f"My goal is focused on {category}, I want to {specific_goal}, and I want to achieve this goal by the{timeframe} " ,
+    fg=radio_button_fg_color,) #Text colour
     result_frame.pack()
 
 
 def hide_all_frames():
-
-  quiz_frame.pack_forget()
-
+    quiz_frame.pack_forget()
+    start_frame.pack_forget()
+    result_frame.pack_forget()
 
 # Creating radio buttons - ensures that only one box can be checked
 def create_radio_buttons(options_list, current_frame):
@@ -122,7 +128,7 @@ def create_radio_buttons(options_list, current_frame):
     radio_button = Radiobutton(current_frame,
                                text=option,
                                font=("Verdana", 25),
-                               fg="#A6DF05",
+                               fg=radio_button_fg_color,
                                bg=radio_button_bg_color,
                                variable=selected_option,
                                value=index,
@@ -143,14 +149,14 @@ def selected_radio_button():
   global radio_button_list, next_frame
 
   for radio_button in radio_button_list:
-    radio_button.config(fg="#A6DF05", bg=radio_button_bg_color)
+    radio_button.config(fg=radio_button_fg_color, bg=radio_button_bg_color)
 
   radio_button_list[selected_option.get()].config(bg="grey", fg="black")
   next_frame = radio_button_list[selected_option.get()]['text']
 
 
 def update_frame(text_label):
-  goalarea_label.configure(text=text_label)
+  goalarea_label.configure(text=text_label,fg=radio_button_fg_color )
 
 
 #### Top Frame ####
@@ -210,7 +216,7 @@ question_label = Label(
     start_frame,
     text="Are you curious to discover and work towards a personalised goal?",
     font=("Verdana", 25),
-    fg="#FBFF37",
+    fg=radio_button_fg1_color,
     bg=radio_button_bg_color)
 #Positioning of this text
 question_label.place(relx=0.5, rely=0.25, anchor=CENTER)
@@ -220,7 +226,7 @@ action_label = Label(
     start_frame,
     text="Take the quiz below to begin your journey towards success!",
     font=("Verdana", 20),
-    fg="#A6DF05",
+    fg=radio_button_fg_color,
     bg=radio_button_bg_color)
 #Positioning of this text
 action_label.place(relx=0.5, rely=0.45, anchor=CENTER)
@@ -244,7 +250,7 @@ quiz_frame.pack_propagate(False)
 goalarea_label = Label(quiz_frame,
                        text="What area would you like your goal to focus on?",
                        font=("Verdana", 30),
-                       fg="#FBFF37",
+                       fg=radio_button_fg1_color,
                        bg=radio_button_bg_color)
 #Positioning of this text
 goalarea_label.place(relx=0.5, rely=0.15, anchor=CENTER)
@@ -267,7 +273,7 @@ result_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 goalresult_label13 = Label(result_frame,
                      text="This is your personalised goal!",
                      font=("Verdana", 30),
-                     fg="#FBFF37",
+                     fg=radio_button_fg1_color,
                      bg=radio_button_bg_color)
 #Positioning of this text
 goalresult_label13.place(relx=0.5, rely=0.15, anchor=CENTER)
@@ -276,7 +282,7 @@ goalresult_label13.place(relx=0.5, rely=0.15, anchor=CENTER)
 screenshot_label14 = Label(result_frame,
                      text="(Take a screenshot to remember)",
                      font=("Verdana", 18),
-                     fg="#FBFF37",
+                     fg=radio_button_fg1_color,
                      bg=radio_button_bg_color)
 #Positioning of this text
 screenshot_label14.place(relx=0.5, rely=0.22, anchor=CENTER)
