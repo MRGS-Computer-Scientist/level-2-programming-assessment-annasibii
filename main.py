@@ -102,7 +102,7 @@ def go_to_next_frame():
     
     goal_message_label.config(
         text=
-        f"My goal is focused on {category}, I want to {specific_goal}, and I want to achieve this goal by the{timeframe} " ,
+        f"My goal is focused on {category}, I want to {specific_goal}, and I want to achieve this goal by the {timeframe} " ,
     fg=radio_button_fg_color,) #Text colour
     result_frame.pack()
 
@@ -140,7 +140,7 @@ def create_radio_buttons(options_list, current_frame):
                                command=selected_radio_button)
 
     radio_button.place(relx=0.2, rely=relative_y, anchor=W)
-    relative_y = relative_y + 0.1
+    relative_y = relative_y + 0.13
     print("Creating", index, "radio button")
     radio_button_list.append(radio_button)
 
