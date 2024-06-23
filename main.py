@@ -1,9 +1,11 @@
 from tkinter import *
+import tkinter.messagebox as messagebox
 
 window = Tk()
 
-# Colour Palette (in order: Purple, Green, Yellow)
+# Colour Palette (in order: Purple, Red, Green, Yellow)
 radio_button_bg_color = '#2C2A64'
+radio_button_bg1_color = '#A20202'
 radio_button_fg_color = '#A6DF05'
 radio_button_fg1_color = '#FBFF37'
 
@@ -112,6 +114,7 @@ def hide_all_frames():
     start_frame.pack_forget()
     result_frame.pack_forget()
     aboutus_frame.pack_forget()
+    final_frame.pack_forget()
 
 def show_start_frame():
   hide_all_frames()
@@ -247,7 +250,7 @@ action_label.place(relx=0.5, rely=0.45, anchor=CENTER)
 quiz_button = Button(start_frame,
                      text="Take the Quiz",
                      font=("Arial", 37),
-                     bg='#A20202',
+                     bg=radio_button_bg1_color,
                      fg='white',
                      borderwidth=7,
                      command=go_to_next_frame)
@@ -261,7 +264,7 @@ aboutus_label = Label(aboutus_frame,
   text="About Us",
   font=("Verdana", 30),
   fg="#FBFF37",
-  bg="#2C2A64")
+  bg=radio_button_bg_color)
 #Positioning of this text
 aboutus_label.place(relx=0.5, rely=0.15, anchor=CENTER)
 
@@ -278,7 +281,7 @@ aboutus_description = Label(aboutus_frame,
                             text=("My Goalie is designed to help assist young people on their journey towards success. It enables young people to go through a questionnaire where they can select from various options which help form a personalised goal. By visually selecting a goal helps to deepen the understanding of what the user’s goal is and how to achieve it."),
                             font=("Verdana", 15),
                             fg="white",
-                            bg="#2C2A64",
+                            bg=radio_button_bg_color,
                             wraplength=500,)
 # Positioning of this text
 aboutus_description.place(relx=0.95, rely=0.5, anchor=E)
@@ -308,7 +311,7 @@ goalarea_label.place(relx=0.5, rely=0.15, anchor=CENTER)
 next_button = Button(quiz_frame,
                      text="Next",
                      font=("Arial", 30),
-                     bg='#A20202',
+                     bg=radio_button_bg1_color,
                      fg='white',
                      borderwidth=7,
                      command=go_to_next_frame)
@@ -350,5 +353,49 @@ email_help_label.place(relx=0.5, rely=0.65, anchor=CENTER)
 
 email_entry = Text(result_frame, width=25, height=2)
 email_entry.place(relx=0.5, rely=0.75, anchor=CENTER)
+
+def validate_email():
+  email = email_entry.get("1.0", "end").strip()
+  
+  if not email:
+     messagebox.showerror("Error", "Please enter your email address")
+     return false 
+
+  if len(email) < 6 or len(email) > 50:
+     messagebox.showerror("Error", "Email length must be between 6 and 50 characters")
+     return false 
+
+  if "@" not in email:
+     messagebox.showerror("Error", "Please enter a valid email address (e.g., emilymay@gmail.com)")
+     return false
+
+  return True 
+
+def send_email():
+    if validate_email():
+      result_frame.pack_forget()  # Hide the result_frame
+      final_frame.pack()
+
+send_button = Button(result_frame,
+                     text="send",
+                     font=("Arial", 30),
+                     bg=radio_button_bg1_color,
+                     fg='white',
+                     borderwidth=7,
+                     command=send_email
+                     )
+send_button.place(relx=0.8, rely=0.75, anchor=S)
+
+##### FINAL FRAME #####
+final_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+
+final_label = Label(final_frame,
+                    text="Congratulations! You've completed the process and have been emailed your goal",
+                    font=("Verdana", 25),
+                    fg="white",
+                    bg=radio_button_bg_color)
+final_label.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+
 
 window.mainloop()
