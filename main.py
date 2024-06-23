@@ -265,17 +265,30 @@ aboutus_label = Label(aboutus_frame,
 #Positioning of this text
 aboutus_label.place(relx=0.5, rely=0.15, anchor=CENTER)
 
+img1 = PhotoImage(file="aboutuslogo.png")
+#This resizes the original picture by a factor of 5
+img1 = img1.subsample(7)
+#This allows the gray border of the picture to disappear
+label1 = Label(aboutus_frame, image=img1, borderwidth=0, highlightthickness=0)
+label1.place(relx=0.32, rely=0.07, anchor=NW)
+
+
 # Adding the description text
 aboutus_description = Label(aboutus_frame,
-                            text=("My Goalie is designed to help assist young people on their journey towards success.It enables young people to go through a questionnaire where they can select from various options which help form a personalised goal. By visually selecting a goal helps to deepen the understanding of what the user’s goal is and how to achieve it."),
+                            text=("My Goalie is designed to help assist young people on their journey towards success. It enables young people to go through a questionnaire where they can select from various options which help form a personalised goal. By visually selecting a goal helps to deepen the understanding of what the user’s goal is and how to achieve it."),
                             font=("Verdana", 15),
                             fg="white",
                             bg="#2C2A64",
-                            wraplength=500,
-                            justify=RIGHT,
-                            )
+                            wraplength=500,)
 # Positioning of this text
 aboutus_description.place(relx=0.95, rely=0.5, anchor=E)
+
+img2 = PhotoImage(file="aboutus.png")
+#This resizes the original picture by a factor of 5
+img2 = img2.subsample(5)
+#This allows the gray border of the picture to disappear
+label2 = Label(aboutus_frame, image=img2, borderwidth=0, highlightthickness=0)
+label2.place(relx=0.1, rely=0.3, anchor=NW)
 
 ######## Quiz Frame ########
 
