@@ -9,8 +9,10 @@ radio_button_bg1_color = '#A20202'
 radio_button_fg_color = '#A6DF05'
 radio_button_fg1_color = '#FBFF37'
 
+#List of all the radio buttons involved in the program 
 radio_button_list = []
 
+#List of all the options that the user can choose from 
 current_options = []
 quiz_options = ["Productivity", "Health"]
 productivity_options = ["Studying", "Reading", "Money"]
@@ -108,7 +110,7 @@ def go_to_next_frame():
     fg=radio_button_fg_color,) #Text colour
     result_frame.pack()
 
-
+#All the frames involved (not including top frame as that always appears) in the program and their positions 
 def hide_all_frames():
     quiz_frame.pack_forget()
     start_frame.pack_forget()
@@ -116,16 +118,17 @@ def hide_all_frames():
     aboutus_frame.pack_forget()
     final_frame.pack_forget()
 
+#Presenting the start frame 
 def show_start_frame():
   hide_all_frames()
   start_frame.pack()
 
-
+#Presenting the about us frame 
 def show_aboutus_frame():
   hide_all_frames()
   aboutus_frame.pack()
 
-# Creating radio buttons - ensures that only one box can be checked
+# Creating radio buttons - from the options list and presenting it in the current frame
 def create_radio_buttons(options_list, current_frame):
   global radio_button_list
 
@@ -135,9 +138,10 @@ def create_radio_buttons(options_list, current_frame):
   radio_button_list = [
   ]  # Initialise radio button list, removing previous radio buttons
 
-  relative_y = 0.35  # Used for positioning the radio button. This is the starting y-axis position
+  relative_y = 0.35  # Used for positioning the radio buttons. This is the starting y-axis position
   for index, option in enumerate(options_list):
 
+#Creating radio button and adjusting its visual appearance 
     radio_button = Radiobutton(current_frame,
                                text=option,
                                font=("Verdana", 25),
@@ -151,7 +155,7 @@ def create_radio_buttons(options_list, current_frame):
                                highlightthickness=0,
                                selectcolor="#2C2A64",
                                command=selected_radio_button)
-
+#Positioning of the radio buttons
     radio_button.place(relx=0.2, rely=relative_y, anchor=W)
     relative_y = relative_y + 0.13
     print("Creating", index, "radio button")
@@ -161,9 +165,12 @@ def create_radio_buttons(options_list, current_frame):
 def selected_radio_button():
   global radio_button_list, next_frame
 
+#Adressing the radio buttons and their colours when they are selected/ or not selected
   for radio_button in radio_button_list:
+#The colour appearance for the non selected radio buttons 
     radio_button.config(fg=radio_button_fg_color, bg=radio_button_bg_color)
 
+#The colour appearance of the selected radio button 
   radio_button_list[selected_option.get()].config(bg="grey", fg="black")
   next_frame = radio_button_list[selected_option.get()]['text']
 
@@ -196,6 +203,7 @@ text_label = Label(top_frame,
 #Positioning of this text
 text_label.place(relx=0.09, rely=0.01, anchor=NW)
 
+#Button for home - goes to the first page/home page 
 home_button = Button(
     top_frame,
     text="Home",
@@ -203,10 +211,11 @@ home_button = Button(
     bg='white',
     fg='black',
     borderwidth=2,
-    command=show_start_frame
-)
+    command=show_start_frame)
+#Positioning of the home button 
 home_button.place(relx=0.8, rely=0.75, anchor=S)
 
+#Button for the about us - goes to the about us frame 
 aboutus_button = Button(
     top_frame,
     text="About us",
@@ -214,8 +223,8 @@ aboutus_button = Button(
     bg='white',
     fg='black',
     borderwidth=2,
-    command=show_aboutus_frame
-)
+    command=show_aboutus_frame)
+#Positioning of the about us button 
 aboutus_button.place(relx=0.9, rely=0.75, anchor=S)
 
 ##### Start Frame #####
@@ -268,6 +277,7 @@ aboutus_label = Label(aboutus_frame,
 #Positioning of this text
 aboutus_label.place(relx=0.5, rely=0.15, anchor=CENTER)
 
+#Image for the tiny logo/image beside the about us label
 img1 = PhotoImage(file="aboutuslogo.png")
 #This resizes the original picture by a factor of 5
 img1 = img1.subsample(7)
@@ -286,6 +296,7 @@ aboutus_description = Label(aboutus_frame,
 # Positioning of this text
 aboutus_description.place(relx=0.95, rely=0.5, anchor=E)
 
+#Image of people in the about us page 
 img2 = PhotoImage(file="aboutus.png")
 #This resizes the original picture by a factor of 5
 img2 = img2.subsample(5)
@@ -295,6 +306,7 @@ label2.place(relx=0.1, rely=0.3, anchor=NW)
 
 ######## Quiz Frame ########
 
+#Creating a quiz frame 
 quiz_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 quiz_frame.pack_propagate(False)
 
@@ -315,10 +327,12 @@ next_button = Button(quiz_frame,
                      fg='white',
                      borderwidth=7,
                      command=go_to_next_frame)
+#Positioning of the next button
 next_button.place(relx=0.8, rely=0.75, anchor=S)
 
 ##### RESULT FRAME #####
 
+#Created a result frame 
 result_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
 #Text displaying the yellow text
@@ -339,68 +353,101 @@ screenshot_label14 = Label(result_frame,
 #Positioning of this text
 screenshot_label14.place(relx=0.5, rely=0.22, anchor=CENTER)
 
+#Label for the goal message, including adjustments in visual appearance
 goal_message_label = Label(result_frame,
                            text="",
                            font=("Verdana", 20),
                            fg="white",
                            bg=radio_button_bg_color,
                            wraplength=500)
+#Positioning of this label 
 goal_message_label.place(relx=0.5, rely=0.39, anchor=CENTER)
 
+#The label that asks users to input email
 email_help_label = Label(
     result_frame, text="Please enter your email to receive your results")
+#Positioning of this label
 email_help_label.place(relx=0.5, rely=0.65, anchor=CENTER)
 
+#Created a text widget for the email entry 
 email_entry = Text(result_frame, width=25, height=2)
+#Positioning of this text widget 
 email_entry.place(relx=0.5, rely=0.75, anchor=CENTER)
 
+#Define a function to validate the email entered by the user
 def validate_email():
+#Get the email text from the email_entry widget and remove any extra whitespace
   email = email_entry.get("1.0", "end").strip()
-  
+
+#Checks if the email entry box is empty
   if not email:
+#Display an error message if the email is empty
      messagebox.showerror("Error", "Please enter your email address")
      return false 
 
+#Checks if the email length is between 6-50 characters
   if len(email) < 6 or len(email) > 50:
+#Displays an error message if the email is not between 6-50 characters/not within the range
      messagebox.showerror("Error", "Email length must be between 6 and 50 characters")
      return false 
 
+#Checks if the email includes an '@' symbol
   if "@" not in email:
+#Display an error message if the email does not include an '@' symbol
      messagebox.showerror("Error", "Please enter a valid email address (e.g., emilymay@gmail.com)")
      return false
 
+#Returns as true if entry passes all the above - indicating the email is valid
   return True 
 
+#Bind the validate_email function to the email_entry widget
 def send_email():
     if validate_email():
-      result_frame.pack_forget()  # Hide the result_frame
-      final_frame.pack()
+      result_frame.pack_forget()  # Hide the result_frame 
+      final_frame.pack() # Presents the final frame
 
+#Created a send button to send the email
 send_button = Button(result_frame,
                      text="send",
                      font=("Arial", 30),
                      bg=radio_button_bg1_color,
                      fg='white',
                      borderwidth=7,
-                     command=send_email
-                     )
+                     command=send_email)
+#Positioning of the send button                     
 send_button.place(relx=0.8, rely=0.75, anchor=S)
 
 ##### FINAL FRAME #####
+
+#Created a final frame 
 final_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
+#Created a congragulations label + visual appearance adjustments
 congrats_label = Label(final_frame,
                     text="Congratulations!",
                     font=("Verdana", 30),
                     fg=radio_button_fg_color,
                     bg=radio_button_bg_color)
+#Positioned the label 
 congrats_label.place(relx=0.5, rely=0.15, anchor=CENTER)
 
+#Created a label to update the users that the process is over and that an email has been sent (doesn't actually send the email)
 final_label = Label(final_frame,
                     text="You've completed the process and have been emailed your goal!",
                     font=("Verdana", 25),
                     fg="white",
                     bg=radio_button_bg_color)
+#Positioning of this label 
 final_label.place(relx=0.5, rely=0.30, anchor=CENTER)
+
+#Image on the final frame of people jumping 
+img3 = PhotoImage(file="celebrate.png")
+#This resizes the original picture by a factor of 3
+img3 = img3.subsample(3)
+#This allows the gray border of the picture to disappear
+label3 = Label(final_frame, image=img3, borderwidth=0, highlightthickness=0)
+#Positioning of this picture
+label3.place(relx=0.5, rely=0.7, anchor=CENTER)
+
 
 window.mainloop()
