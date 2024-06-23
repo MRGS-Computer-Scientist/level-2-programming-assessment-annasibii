@@ -111,6 +111,16 @@ def hide_all_frames():
     quiz_frame.pack_forget()
     start_frame.pack_forget()
     result_frame.pack_forget()
+    aboutus_frame.pack_forget()
+
+def show_start_frame():
+  hide_all_frames()
+  start_frame.pack()
+
+
+def show_aboutus_frame():
+  hide_all_frames()
+  aboutus_frame.pack()
 
 # Creating radio buttons - ensures that only one box can be checked
 def create_radio_buttons(options_list, current_frame):
@@ -190,6 +200,7 @@ home_button = Button(
     bg='white',
     fg='black',
     borderwidth=2,
+    command=show_start_frame
 )
 home_button.place(relx=0.8, rely=0.75, anchor=S)
 
@@ -200,6 +211,7 @@ aboutus_button = Button(
     bg='white',
     fg='black',
     borderwidth=2,
+    command=show_aboutus_frame
 )
 aboutus_button.place(relx=0.9, rely=0.75, anchor=S)
 
@@ -240,6 +252,11 @@ quiz_button = Button(start_frame,
                      borderwidth=7,
                      command=go_to_next_frame)
 quiz_button.place(relx=0.5, rely=0.75, anchor=S)
+
+#### About us Frame ####
+aboutus_frame = Frame(window, width=1280, height=800, background='#2C2A64')
+aboutus_frame.pack_propagate(0)
+
 
 ######## Quiz Frame ########
 
