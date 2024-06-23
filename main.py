@@ -1,6 +1,9 @@
+#Import all classes and functions from the tkinter library/module
 from tkinter import *
+#Import the messagebox module from tkinter to display the message boxes
 import tkinter.messagebox as messagebox
 
+#Creates a window 
 window = Tk()
 
 # Colour Palette (in order: Purple, Red, Green, Yellow)
@@ -413,7 +416,7 @@ send_button = Button(result_frame,
                      bg=radio_button_bg1_color,
                      fg='white',
                      borderwidth=7,
-                     command=send_email)
+                     command=send_email) 
 #Positioning of the send button                     
 send_button.place(relx=0.8, rely=0.75, anchor=S)
 
