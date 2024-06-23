@@ -257,6 +257,25 @@ quiz_button.place(relx=0.5, rely=0.75, anchor=S)
 aboutus_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 aboutus_frame.pack_propagate(0)
 
+aboutus_label = Label(aboutus_frame,
+  text="About Us",
+  font=("Verdana", 30),
+  fg="#FBFF37",
+  bg="#2C2A64")
+#Positioning of this text
+aboutus_label.place(relx=0.5, rely=0.15, anchor=CENTER)
+
+# Adding the description text
+aboutus_description = Label(aboutus_frame,
+                            text=("My Goalie is designed to help assist young people on their journey towards success.It enables young people to go through a questionnaire where they can select from various options which help form a personalised goal. By visually selecting a goal helps to deepen the understanding of what the user’s goal is and how to achieve it."),
+                            font=("Verdana", 15),
+                            fg="white",
+                            bg="#2C2A64",
+                            wraplength=500,
+                            justify=RIGHT,
+                            )
+# Positioning of this text
+aboutus_description.place(relx=0.95, rely=0.5, anchor=E)
 
 ######## Quiz Frame ########
 
