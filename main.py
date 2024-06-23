@@ -389,13 +389,18 @@ send_button.place(relx=0.8, rely=0.75, anchor=S)
 ##### FINAL FRAME #####
 final_frame = Frame(window, width=1280, height=800, background='#2C2A64')
 
+congrats_label = Label(final_frame,
+                    text="Congratulations!",
+                    font=("Verdana", 30),
+                    fg=radio_button_fg_color,
+                    bg=radio_button_bg_color)
+congrats_label.place(relx=0.5, rely=0.15, anchor=CENTER)
+
 final_label = Label(final_frame,
-                    text="Congratulations! You've completed the process and have been emailed your goal",
+                    text="You've completed the process and have been emailed your goal!",
                     font=("Verdana", 25),
                     fg="white",
                     bg=radio_button_bg_color)
-final_label.place(relx=0.5, rely=0.15, anchor=CENTER)
-
-
+final_label.place(relx=0.5, rely=0.30, anchor=CENTER)
 
 window.mainloop()
